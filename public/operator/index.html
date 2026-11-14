@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tonight · Shelter operators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="operator.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Tonight · Operators</h1>
+      <p>Update your free beds. Changes show on the public board instantly.</p>
+    </div>
+    <div class="tools">
+      <label>
+        <span>Shelter</span>
+        <select id="filter"><option value="">All shelters</option></select>
+      </label>
+      <a class="link" href="/board/" target="_blank" rel="noopener">Open public board ↗</a>
+    </div>
+  </header>
+
+  <p class="demo">Demo mode: sample shelters, no login yet. <button id="reset" type="button">Reset demo data</button></p>
+  <p id="conn" class="conn">Connecting…</p>
+
+  <main id="cards" class="cards"></main>
+
+  <script src="/shared/status.js"></script>
+  <!-- Data source: swap this file to change the backend (see the file header). -->
+  <script src="/shared/data-local.js"></script>
+  <script src="operator.js"></script>
+</body>
+</html>

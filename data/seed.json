@@ -1,0 +1,10 @@
+[
+  { "id": "mitte",           "name": "Shelter Mitte",           "district": "Mitte",                      "totalBeds": 40, "freeBeds": 12, "admits": "all",   "opensAt": "19:00", "closesAt": "08:00" },
+  { "id": "kreuzberg",       "name": "Shelter Kreuzberg",       "district": "Friedrichshain-Kreuzberg",   "totalBeds": 30, "freeBeds": 3,  "admits": "women", "opensAt": "18:00", "closesAt": "09:00" },
+  { "id": "neukoelln",       "name": "Shelter Neukölln",        "district": "Neukölln",                   "totalBeds": 40, "freeBeds": 0,  "admits": "men",   "opensAt": "20:00", "closesAt": "08:00" },
+  { "id": "wedding",         "name": "Shelter Wedding",         "district": "Mitte",                      "totalBeds": 20, "freeBeds": 7,  "admits": "all",   "opensAt": "19:00", "closesAt": "07:30" },
+  { "id": "prenzlauer-berg", "name": "Shelter Prenzlauer Berg", "district": "Pankow",                     "totalBeds": 30, "freeBeds": 15, "admits": "all",   "opensAt": "21:00", "closesAt": "08:00" },
+  { "id": "schoeneberg",     "name": "Shelter Schöneberg",      "district": "Tempelhof-Schöneberg",       "totalBeds": 20, "freeBeds": 1,  "admits": "women", "opensAt": "19:00", "closesAt": "08:00" },
+  { "id": "charlottenburg",  "name": "Shelter Charlottenburg",  "district": "Charlottenburg-Wilmersdorf", "totalBeds": 40, "freeBeds": 22, "admits": "men",   "opensAt": "18:30", "closesAt": "08:30" },
+  { "id": "lichtenberg",     "name": "Shelter Lichtenberg",     "district": "Lichtenberg",                "totalBeds": 30, "freeBeds": 9,  "admits": "all",   "opensAt": "20:00", "closesAt": "08:00" }
+]
