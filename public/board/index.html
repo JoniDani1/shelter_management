@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tonight · Free beds Berlin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="board.css">
+</head>
+<body>
+  <main class="board">
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>Free beds tonight</h1>
+          <p class="sub">Night shelters in Berlin · live</p>
+        </div>
+      </div>
+      <div class="demo" title="All names and numbers are examples">Demo · sample data</div>
+      <div class="clock">
+        <div id="time">--:--</div>
+        <div id="date" class="date"></div>
+      </div>
+    </header>
+
+    <div class="cols" aria-hidden="true">
+      <span>Shelter</span>
+      <span class="num">Free beds</span>
+      <span>Occupancy</span>
+      <span>Status</span>
+      <span class="num">Updated</span>
+    </div>
+
+    <ol id="rows" class="rows" aria-live="polite"></ol>
+
+    <footer class="bottom">
+      <span id="conn" class="conn">Connecting…</span>
+      <span class="note">Availability may change. Admission depends on shelter rules. No live data: all names and numbers are examples.</span>
+    </footer>
+  </main>
+
+  <script src="/shared/status.js"></script>
+  <!-- Data source: swap this file to change the backend (see the file header). -->
+  <script src="/shared/data-local.js"></script>
+  <script src="board.js"></script>
+</body>
+</html>
