@@ -75,3 +75,7 @@ docker push europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<t
 gcloud run deploy tonight --image=europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag> \
   --region=europe-west3 --allow-unauthenticated --max-instances=1 --timeout=3600 --memory=256Mi
 ```
+
+## Shelter management
+
+The management screen is included on this branch alongside the public board. See the [management guide and screenshot](docs/shelter-management.md) for shelter selection, plus/minus controls, count confirmation and admission controls.
