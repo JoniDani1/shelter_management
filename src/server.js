@@ -63,7 +63,6 @@ function createApp(store) {
     });
   });
 
-  app.get('/', (req, res) => res.redirect('/board/'));
 
   return app;
 }
