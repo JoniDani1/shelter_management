@@ -1,0 +1,49 @@
+# Deploys Tonight to Firebase (Hosting site "tonight-berlin" + Firestore rules)
+# on every push to main, i.e. after a pull request is merged.
+# Needs the repository secret FIREBASE_SERVICE_ACCOUNT (full JSON key of a
+# service account with Firebase Hosting Admin and Firebase Rules Admin).
+name: Deploy to Firebase
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never run two production deploys at once; a newer push waits for the older.
+concurrency:
+  group: firebase-deploy-live
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://tonight-berlin.web.app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Writes the key to a temp file and sets GOOGLE_APPLICATION_CREDENTIALS,
+      # which the Firebase CLI picks up.
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - name: Deploy Hosting and Firestore rules
+        run: npx --yes firebase-tools@14 deploy --only hosting,firestore:rules --project gen-lang-client-0099418772 --non-interactive
