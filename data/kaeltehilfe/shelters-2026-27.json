@@ -1,0 +1,1559 @@
+{
+  "source": {
+    "title": "Notübernachtungen November 2026 (Stand: 30.10.2026)",
+    "publisher": "Koordinierungsstelle der Berliner Kältehilfe (GEBEWO pro gGmbH)",
+    "url": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf",
+    "retrieved": "2026-11-14"
+  },
+  "season": "2026/27",
+  "shelters": [
+    {
+      "id": "franklinstrasse",
+      "type": "night_shelter",
+      "name": "Notübernachtung Franklinstraße",
+      "address": "Franklinstr. 27a, 10587 Berlin",
+      "district": "Charlottenburg-Wilmersdorf",
+      "districtAsListed": "Charlottenburg-Wilmersdorf",
+      "location": {
+        "lat": 52.518968,
+        "lng": 13.32538
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 73,
+      "bedsMen": 65,
+      "bedsWomen": 8,
+      "admits": "all",
+      "opensAt": "18:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 3912722"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Ernst-Reuter-Platz",
+        "type": "U",
+        "distanceMeters": 842
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "containerbahnhof",
+      "type": "night_shelter",
+      "name": "Notübernachtung am Containerbahnhof (NAC)",
+      "address": "Am Containerbahnhof 1, 10367 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.514685,
+        "lng": 13.477396
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "street",
+      "totalBeds": 70,
+      "bedsMen": 58,
+      "bedsWomen": 12,
+      "admits": "all",
+      "opensAt": "19:30",
+      "closesAt": "07:30",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": true,
+      "accessible": true,
+      "phone": [
+        "030 66628770"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S+U Frankfurter Allee",
+        "type": "U+S",
+        "distanceMeters": 161
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "strassenfeger",
+      "type": "night_shelter",
+      "name": "Notübernachtung Strassenfeger",
+      "address": "Storkower Str. 101a, 10407 Berlin",
+      "district": "Pankow",
+      "districtAsListed": "Pankow",
+      "location": {
+        "lat": 52.537423,
+        "lng": 13.452588
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 30,
+      "bedsMen": 22,
+      "bedsWomen": 8,
+      "admits": "all",
+      "opensAt": "18:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": false,
+      "phone": [
+        "030 47905810"
+      ],
+      "notes": "Not barrier-free (\"Nicht barrierefrei!\").",
+      "nearestStation": {
+        "name": "S Landsberger Allee",
+        "type": "S",
+        "distanceMeters": 988
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "neustart-otto-rosenberg-8",
+      "type": "night_shelter",
+      "name": "Neustart Berlin GmbH",
+      "address": "Otto-Rosenberg-Str. 8/8a, 12681 Berlin",
+      "district": "Marzahn-Hellersdorf",
+      "districtAsListed": "Marzahn",
+      "location": {
+        "lat": 52.551477,
+        "lng": 13.545497
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 10,
+      "bedsMen": 8,
+      "bedsWomen": 2,
+      "admits": "all",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 93 66 87 39"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S Raoul-Wallenberg-Str.",
+        "type": "S",
+        "distanceMeters": 211
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "neustart-otto-rosenberg-3",
+      "type": "night_shelter",
+      "name": "Neustart GmbH",
+      "address": "Otto-Rosenberg-Str. 3 u. 10, 12681 Berlin",
+      "district": "Marzahn-Hellersdorf",
+      "districtAsListed": "Marzahn",
+      "location": {
+        "lat": 52.551244,
+        "lng": 13.545383
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 8,
+      "bedsMen": 5,
+      "bedsWomen": 3,
+      "admits": "all",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 99 27 33 76",
+        "030 93 66 10 87"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S Raoul-Wallenberg-Str.",
+        "type": "S",
+        "distanceMeters": 210
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "herberge-zur-heimat",
+      "type": "night_shelter",
+      "name": "Herberge zur Heimat",
+      "address": "Falkenseer Chaussee 154, 13589 Berlin",
+      "district": "Spandau",
+      "districtAsListed": "Spandau",
+      "location": {
+        "lat": 52.553635,
+        "lng": 13.150234
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 10,
+      "bedsMen": 8,
+      "bedsWomen": 2,
+      "admits": "all",
+      "opensAt": "18:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 374 99 0 50"
+      ],
+      "notes": null,
+      "nearestStation": null,
+      "nearestStationSource": null,
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "kurmaerkische",
+      "type": "night_shelter",
+      "name": "NÜ Kurmärkische",
+      "address": "Kurmärkische Str. 1-3, 10783 Berlin",
+      "district": "Tempelhof-Schöneberg",
+      "districtAsListed": "Schöneberg",
+      "location": {
+        "lat": 52.499476,
+        "lng": 13.359217
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 30,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "18:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0171 520 07 30"
+      ],
+      "notes": "30 places, men and women (no split given).",
+      "nearestStation": {
+        "name": "U Kurfürstenstr.",
+        "type": "U",
+        "distanceMeters": 248
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "haus-sophie",
+      "type": "night_shelter",
+      "name": "Haus Sophie",
+      "address": "Wollenberger Straße 10, 13055 Berlin",
+      "district": "Lichtenberg",
+      "districtAsListed": "Lichtenberg",
+      "location": {
+        "lat": 52.550384,
+        "lng": 13.512297
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 39,
+      "bedsMen": 33,
+      "bedsWomen": 6,
+      "admits": "all",
+      "opensAt": "17:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 98 69 47 01"
+      ],
+      "notes": "Geocoder places this address in postcode 13053, the source says 13055.",
+      "nearestStation": {
+        "name": "S Gehrenseestr.",
+        "type": "S",
+        "distanceMeters": 1082
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "lehrter-strasse",
+      "type": "night_shelter",
+      "name": "Notübernachtung Lehrter Str.",
+      "address": "Lehrter Str. 68, 10557 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.526367,
+        "lng": 13.363465
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 100,
+      "bedsMen": 75,
+      "bedsWomen": 25,
+      "admits": "all",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-04-28",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 / 69 03 35 28"
+      ],
+      "notes": "Last admission 4 am (\"Letzter Einlass: 4 Uhr\").",
+      "nearestStation": {
+        "name": "S+U Berlin Hauptbahnhof",
+        "type": "U+S",
+        "distanceMeters": 389
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "neue-chance-steglitz",
+      "type": "night_shelter",
+      "name": "Notübernachtung der Neuen Chance am Rathaus Steglitz",
+      "address": "Kuhligkshofstr. 5, 12165 Berlin",
+      "district": "Steglitz-Zehlendorf",
+      "districtAsListed": "Steglitz",
+      "location": {
+        "lat": 52.455079,
+        "lng": 13.319973
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 36,
+      "bedsMen": 30,
+      "bedsWomen": 6,
+      "admits": "all",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0178 / 88 77 729"
+      ],
+      "notes": "Staircase, 1st floor (\"Treppenhaus TC, im 1. Stock\").",
+      "nearestStation": {
+        "name": "S+U Rathaus Steglitz",
+        "type": "U+S",
+        "distanceMeters": 147
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "frauen-mitten-im-kiez",
+      "type": "night_shelter",
+      "name": "Notübernachtung für Frauen 'Mitten im Kiez'",
+      "address": "Petersburger Straße 92, 10247 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.517273,
+        "lng": 13.453035
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 9,
+      "bedsMen": 0,
+      "bedsWomen": 9,
+      "admits": "women",
+      "opensAt": "19:00",
+      "closesAt": null,
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": false,
+      "phone": [
+        "030 29350557"
+      ],
+      "notes": "Not barrier-free. Trans-inclusive (\"Transinklusiv\"). Closing time not stated (\"Ab 19 Uhr\"). Bed count marked with '*' in the source (meaning not explained).",
+      "nearestStation": {
+        "name": "U Frankfurter Tor",
+        "type": "U",
+        "distanceMeters": 181
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "frauen-24-7-kreuzberg",
+      "type": "night_shelter",
+      "name": "24/7 Notunterkunft für Frauen Kreuzberg",
+      "address": "Hallesches Ufer 30, 10963 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.49896,
+        "lng": 13.386883
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 65,
+      "bedsMen": 0,
+      "bedsWomen": 65,
+      "admits": "women",
+      "opensAt": "00:00",
+      "closesAt": "24:00",
+      "open24h": true,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 20 215 98 70"
+      ],
+      "notes": "Open around the clock (\"ganztägig\"). Places can only be requested by phone from 10:30 am. Bed count marked with '*' in the source (meaning not explained).",
+      "nearestStation": {
+        "name": "U Möckernbrücke",
+        "type": "U",
+        "distanceMeters": 245
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "lichtblick",
+      "type": "night_shelter",
+      "name": "Notübernachtung Lichtblick",
+      "address": "Wrangelstr. 30, 10997 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.501773,
+        "lng": 13.433775
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 25,
+      "bedsMen": 0,
+      "bedsWomen": 25,
+      "admits": "women",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0174 / 45 86 780"
+      ],
+      "notes": "Saturday and Sunday 19:00-09:00.",
+      "nearestStation": {
+        "name": "U Görlitzer Bahnhof",
+        "type": "U",
+        "distanceMeters": 536
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "frauen-tieckstrasse-gebewo",
+      "type": "night_shelter",
+      "name": "Notübernachtung für Frauen GEBEWO pro",
+      "address": "Tieckstr. 17 (Hinterhaus, Quergebäude), 10115 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.529575,
+        "lng": 13.390755
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 9,
+      "bedsMen": 0,
+      "bedsWomen": 9,
+      "admits": "women",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 2832939"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S Nordbahnhof",
+        "type": "S",
+        "distanceMeters": 268
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "marie",
+      "type": "night_shelter",
+      "name": "Notübernachtung „Marie“",
+      "address": "Tieckstr. 17 (Vorderhaus Souterrain), 10115 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.529575,
+        "lng": 13.390755
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 10,
+      "bedsMen": 0,
+      "bedsWomen": 10,
+      "admits": "women",
+      "opensAt": "19:10",
+      "closesAt": null,
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": true,
+      "phone": [
+        "030 40006209"
+      ],
+      "notes": "Opens already at 3 pm on Tuesdays. Closing time not stated (\"Ab 19:10 Uhr\").",
+      "nearestStation": {
+        "name": "S Nordbahnhof",
+        "type": "S",
+        "distanceMeters": 268
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "evas-obdach",
+      "type": "night_shelter",
+      "name": "Notübernachtung Evas Obdach",
+      "address": "Fuldastraße 9, 12043 Berlin",
+      "district": "Neukölln",
+      "districtAsListed": "Neukölln",
+      "location": {
+        "lat": 52.483364,
+        "lng": 13.435497
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 30,
+      "bedsMen": 0,
+      "bedsWomen": 30,
+      "admits": "women",
+      "opensAt": "19:00",
+      "closesAt": "09:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": false,
+      "phone": [
+        "030 477 532670",
+        "0151 1464 8758"
+      ],
+      "notes": "Please ask by phone (\"Bitte tel. fragen\"). Not barrier-free.",
+      "nearestStation": {
+        "name": "U Rathaus Neukölln",
+        "type": "U",
+        "distanceMeters": 251
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "evas-haltestelle",
+      "type": "night_shelter",
+      "name": "Evas Haltestelle",
+      "address": "Müllerstr. 126, 13349 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.552866,
+        "lng": 13.347226
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 20,
+      "bedsMen": 0,
+      "bedsWomen": 20,
+      "admits": "women",
+      "opensAt": "18:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 46 232 79"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Seestr.",
+        "type": "U",
+        "distanceMeters": 416
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "home-and-care",
+      "type": "night_shelter",
+      "name": "Notübernachtung Home & Care",
+      "address": "Finsterwalder Str. 64, 13435 Berlin",
+      "district": "Reinickendorf",
+      "districtAsListed": "Reinickendorf",
+      "location": {
+        "lat": 52.602449,
+        "lng": 13.348678
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 7,
+      "bedsMen": 0,
+      "bedsWomen": 7,
+      "admits": "women",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0159 04 75 44 17"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S+U Wittenau",
+        "type": "U+S",
+        "distanceMeters": 1111
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "familien-wrangelstrasse",
+      "type": "family_shelter",
+      "name": "Notunterkunft für wohnungslose Familien",
+      "address": "Wrangelstraße 12, 10997 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.503569,
+        "lng": 13.428165
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": null,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "families",
+      "opensAt": "00:00",
+      "closesAt": "24:00",
+      "open24h": true,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 61073256"
+      ],
+      "notes": "9 family rooms (not beds). Only adults with children. Please call to ask whether places are free.",
+      "nearestStation": {
+        "name": "U Görlitzer Bahnhof",
+        "type": "U",
+        "distanceMeters": 496
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "familien-am-baerensprung",
+      "type": "family_shelter",
+      "name": "NÜ für wohnungslose Familien „Am Bärensprung“",
+      "address": "Am Bärensprung 52/56, 13503 Berlin",
+      "district": "Reinickendorf",
+      "districtAsListed": "Reinickendorf",
+      "location": {
+        "lat": 52.611362,
+        "lng": 13.247163
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 44,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "families",
+      "opensAt": "00:00",
+      "closesAt": "24:00",
+      "open24h": true,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0175 1885103"
+      ],
+      "notes": "44 places, only for adults with children. Please call to ask whether places are free.",
+      "nearestStation": {
+        "name": "S Schulzendorf",
+        "type": "S",
+        "distanceMeters": 260
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "johanniter-ohlauer",
+      "type": "night_shelter",
+      "name": "Notübernachtung der Johanniter Ohlauer Straße",
+      "address": "Ohlauer Straße 22, 10999 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.496732,
+        "lng": 13.430196
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 88,
+      "bedsMen": 88,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "20:00",
+      "closesAt": "07:45",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "030 50562540"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Görlitzer Bahnhof",
+        "type": "U",
+        "distanceMeters": 338
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "st-pius-st-nikolaus",
+      "type": "night_shelter",
+      "name": "Notübernachtung St. Pius / St. Nikolaus",
+      "address": "Palisadenstraße 72, 10243 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.5199,
+        "lng": 13.436189
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 30,
+      "bedsMen": 30,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 53219333"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Strausberger Platz",
+        "type": "U",
+        "distanceMeters": 340
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "awo-kiezcafe",
+      "type": "night_shelter",
+      "name": "AWO Kiezcafé",
+      "address": "Petersburger Str. 92, 10247 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain",
+      "location": {
+        "lat": 52.517273,
+        "lng": 13.453035
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 8,
+      "bedsMen": 8,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "030 29350556"
+      ],
+      "notes": "2nd floor (\"2. OG\").",
+      "nearestStation": {
+        "name": "U Frankfurter Tor",
+        "type": "U",
+        "distanceMeters": 181
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "kubus",
+      "type": "night_shelter",
+      "name": "KUBUS Kältehilfe",
+      "address": "Teupitzer Straße 39, 12059 Berlin",
+      "district": "Neukölln",
+      "districtAsListed": "Neukölln",
+      "location": {
+        "lat": 52.480302,
+        "lng": 13.456146
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 25,
+      "bedsMen": 25,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:00",
+      "closesAt": "07:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 810335161"
+      ],
+      "notes": "Entrance left of the main building.",
+      "nearestStation": {
+        "name": "S Sonnenallee",
+        "type": "S",
+        "distanceMeters": 718
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "schildkroete",
+      "type": "night_shelter",
+      "name": "Kältehilfe Schildkröte",
+      "address": "Otto-Suhr-Allee 94, 10585 Berlin",
+      "district": "Charlottenburg-Wilmersdorf",
+      "districtAsListed": "Charlottenburg-Wilmersdorf",
+      "location": {
+        "lat": 52.516938,
+        "lng": 13.309015
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 26,
+      "bedsMen": 26,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-10-15",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0162 289 29 72"
+      ],
+      "notes": "1st backyard, on the right.",
+      "nearestStation": {
+        "name": "U Richard-Wagner-Platz",
+        "type": "U",
+        "distanceMeters": 124
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "st-marien-liebfrauen",
+      "type": "night_shelter",
+      "name": "Notübernachtung St. Marien-Liebfrauen",
+      "address": "Wrangelstr. 50, 10997 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Kreuzberg",
+      "location": {
+        "lat": 52.498821,
+        "lng": 13.441115
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 12,
+      "bedsMen": 12,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:30",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 61 12 93 24"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Schlesisches Tor",
+        "type": "U",
+        "distanceMeters": 263
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "weitlingstrasse",
+      "type": "night_shelter",
+      "name": "Notübernachtung Weitlingstrasse der GEBEWO",
+      "address": "Weitlingstr. 11, 10317 Berlin",
+      "district": "Lichtenberg",
+      "districtAsListed": "Lichtenberg",
+      "location": {
+        "lat": 52.509982,
+        "lng": 13.498664
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 16,
+      "bedsMen": 16,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-16",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "0176 178 799 99"
+      ],
+      "notes": "Opens mid-November (16 Nov).",
+      "nearestStation": {
+        "name": "S+U Lichtenberg Bhf",
+        "type": "U+S",
+        "distanceMeters": 79
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "kopenhagener-strasse",
+      "type": "night_shelter",
+      "name": "Notübernachtung Kopenhagener Strasse",
+      "address": "Kopenhagener Str. 29, 13407 Berlin",
+      "district": "Reinickendorf",
+      "districtAsListed": "Reinickendorf",
+      "location": {
+        "lat": 52.576228,
+        "lng": 13.360022
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 55,
+      "bedsMen": 55,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "20:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-04-28",
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "030 69033 6120"
+      ],
+      "notes": "Last admission 4 am.",
+      "nearestStation": {
+        "name": "U Residenzstr.",
+        "type": "U",
+        "distanceMeters": 600
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": true,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "caritas-residenzstrasse",
+      "type": "night_shelter",
+      "name": "Caritas Kältehilfe Residenzstraße",
+      "address": "Residenzstr. 90, 13409 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.559532,
+        "lng": 13.371244
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 28,
+      "bedsMen": 28,
+      "bedsWomen": 0,
+      "admits": "men",
+      "opensAt": "19:30",
+      "closesAt": "07:30",
+      "open24h": false,
+      "openDays": "daily",
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0172 3927384"
+      ],
+      "notes": "Driveway via Reginhardstr.",
+      "nearestStation": {
+        "name": "U Osloer Str.",
+        "type": "U",
+        "distanceMeters": 302
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-die-arche",
+      "type": "night_cafe",
+      "name": "Nachtcafé Die Arche",
+      "address": "Plesserstr. 3, 12435 Berlin",
+      "district": "Treptow-Köpenick",
+      "districtAsListed": "Treptow-Köpenick",
+      "location": {
+        "lat": 52.489212,
+        "lng": 13.452199
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 16,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sun"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-10-01",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 533 71 04"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S Treptower Park",
+        "type": "S",
+        "distanceMeters": 830
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "zum-guten-hirten",
+      "type": "night_cafe",
+      "name": "Zum guten Hirten",
+      "address": "Goßlerstraße 30, 12161 Berlin",
+      "district": "Tempelhof-Schöneberg",
+      "districtAsListed": "Schöneberg",
+      "location": {
+        "lat": 52.470996,
+        "lng": 13.327857
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 18,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "20:30",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-10-27",
+      "seasonEnd": "2027-04-30",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0152 5718 7272"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Friedrich-Wilhelm-Platz",
+        "type": "U",
+        "distanceMeters": 73
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-taborgemeinde",
+      "type": "night_cafe",
+      "name": "Nachtcafé Ev. Taborgemeinde",
+      "address": "Taborstr. 17, 10997 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.496757,
+        "lng": 13.446235
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 40,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "21:30",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "tue"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-10-14",
+      "seasonEnd": "2027-04-24",
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "030 612 858 33"
+      ],
+      "notes": "No admission 23:00-07:00.",
+      "nearestStation": {
+        "name": "U Schlesisches Tor",
+        "type": "U",
+        "distanceMeters": 573
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "kaelteschutz-mehringhof",
+      "type": "night_cafe",
+      "name": "Kälteschutz im Mehringhof",
+      "address": "Gneisenaustr. 2a, 10961 Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "districtAsListed": "Friedrichshain-Kreuzberg",
+      "location": {
+        "lat": 52.491949,
+        "lng": 13.388957
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 25,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "20:00",
+      "closesAt": "09:00",
+      "open24h": false,
+      "openDays": [
+        "thu"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-10-29",
+      "seasonEnd": "2027-04-01",
+      "petFriendly": true,
+      "accessible": null,
+      "phone": [
+        "030 120 535 822"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Mehringdamm",
+        "type": "U",
+        "distanceMeters": 188
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-luisen",
+      "type": "night_cafe",
+      "name": "Nachtcafé „Luisen“",
+      "address": "Gierkeplatz 4, 10585 Berlin",
+      "district": "Charlottenburg-Wilmersdorf",
+      "districtAsListed": "Charlottenburg-Wilmersdorf",
+      "location": {
+        "lat": 52.516868,
+        "lng": 13.303219
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 60,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "22:00",
+      "closesAt": "07:00",
+      "open24h": false,
+      "openDays": [
+        "mon"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-11-02",
+      "seasonEnd": "2027-03-29",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0177 27 03 869"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Richard-Wagner-Platz",
+        "type": "U",
+        "distanceMeters": 272
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-herz-jesu",
+      "type": "night_cafe",
+      "name": "Nachtcafé Herz Jesu",
+      "address": "Fehrbelliner Str. 99, 10119 Berlin",
+      "district": "Pankow",
+      "districtAsListed": "Pankow",
+      "location": {
+        "lat": 52.53065,
+        "lng": 13.409557
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 17,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "17:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "mon"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "0162 988 27 64"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Rosa-Luxemburg-Platz",
+        "type": "U",
+        "distanceMeters": 238
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "unter-druck",
+      "type": "night_cafe",
+      "name": "UNTER DRUCK – Kultur von der Strasse e.V.",
+      "address": "Oudenarder Str. 26, 13347 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.553147,
+        "lng": 13.363695
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 15,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "thu"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-11-05",
+      "seasonEnd": "2027-03-25",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 24 72 90 40"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Nauener Platz",
+        "type": "U",
+        "distanceMeters": 307
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "obdach-bei-unter-druck",
+      "type": "night_cafe",
+      "name": "Nachtcafé Obdach e.V. bei UNTER DRUCK",
+      "address": "Oudenarder Str. 26, 13347 Berlin",
+      "district": "Mitte",
+      "districtAsListed": "Mitte",
+      "location": {
+        "lat": 52.553147,
+        "lng": 13.363695
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 15,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "19:00",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "fri"
+      ],
+      "yearRound": true,
+      "seasonStart": null,
+      "seasonEnd": null,
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 415 088 21",
+        "0152 34 57 84 22"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Nauener Platz",
+        "type": "U",
+        "distanceMeters": 307
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-fuerbitt-melanchthon",
+      "type": "night_cafe",
+      "name": "Nachtcafé der ev. KG Fürbitt-Melanchthon",
+      "address": "Kranoldstr. 16, 12051 Berlin",
+      "district": "Neukölln",
+      "districtAsListed": "Neukölln",
+      "location": {
+        "lat": 52.465814,
+        "lng": 13.43368
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 50,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "21:30",
+      "closesAt": "08:00",
+      "open24h": false,
+      "openDays": [
+        "sat"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": true,
+      "phone": [
+        "030 625 3002"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "S+U Hermannstr.",
+        "type": "U+S",
+        "distanceMeters": 251
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    },
+    {
+      "id": "nachtcafe-neu-westend",
+      "type": "night_cafe",
+      "name": "Nachtcafé Neu Westend",
+      "address": "Eichenallee 47-53, 14050 Berlin",
+      "district": "Charlottenburg-Wilmersdorf",
+      "districtAsListed": "Charlottenburg-Wilmersdorf",
+      "location": {
+        "lat": 52.518014,
+        "lng": 13.26283
+      },
+      "locationSource": "derived: OpenStreetMap Nominatim geocoding of the address",
+      "locationPrecision": "address",
+      "totalBeds": 30,
+      "bedsMen": null,
+      "bedsWomen": null,
+      "admits": "all",
+      "opensAt": "19:30",
+      "closesAt": "07:30",
+      "open24h": false,
+      "openDays": [
+        "sun"
+      ],
+      "yearRound": false,
+      "seasonStart": "2026-11-01",
+      "seasonEnd": "2027-03-31",
+      "petFriendly": false,
+      "accessible": null,
+      "phone": [
+        "030 30 42 007"
+      ],
+      "notes": null,
+      "nearestStation": {
+        "name": "U Neu-Westend",
+        "type": "U",
+        "distanceMeters": 266
+      },
+      "nearestStationSource": "derived: nearest U-/S-Bahn stop from VBB data (v6.bvg.transport.rest), straight-line distance",
+      "demo": false,
+      "source": "https://kaeltehilfe-berlin.de/images/Ubersicht%20NUs%202026_November_____.pdf"
+    }
+  ]
+}
