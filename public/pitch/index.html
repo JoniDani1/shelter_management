@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tonight · Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pitch.css">
+</head>
+<body>
+  <!-- A fixed 1600x900 stage, scaled to the window (see pitch.js). -->
+  <div id="viewport">
+    <div id="stage">
+
+      <!-- 1 · Title -->
+      <section class="slide title" data-title="Tonight">
+        <div class="logo" aria-hidden="true"><span></span></div>
+        <h1>Tonight</h1>
+        <p class="tagline">Know there's a bed <em>before</em> you go.</p>
+        <p class="live-line"><span class="dot"></span><span id="live-total">Live data loading…</span></p>
+        <p class="foot">Free beds in Berlin's night shelters, live, where people are.</p>
+      </section>
+
+      <!-- 2 · Problem -->
+      <section class="slide" data-title="The problem">
+        <p class="kicker">The problem</p>
+        <h2>It's −2&nbsp;°C. You cross the city for a bed.<br><span class="hl-full">The shelter is full.</span></h2>
+        <div class="facts">
+          <div class="fact"><b>27</b><span>night shelters in the Berlin Kältehilfe</span></div>
+          <div class="fact"><b>~870</b><span>places for the whole city, every night</span></div>
+          <div class="fact"><b>0</b><span>ways to know if a bed is free before you get there</span></div>
+        </div>
+        <p class="note">Today: printed posters in U-Bahn stations with addresses and bed counts. Whether a bed is free, you find out at the door.</p>
+      </section>
+
+      <!-- 3 · Idea -->
+      <section class="slide" data-title="The idea">
+        <p class="kicker">The idea</p>
+        <h2>Shelters tap <span class="key">+</span> <span class="key">−</span>. Everyone sees it live.</h2>
+        <div class="flow">
+          <div class="step">
+            <div class="icon">📱</div>
+            <h3>Shelter staff</h3>
+            <p>Sign in with Google, pick your shelter, one tap per bed.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="step">
+            <div class="icon">🚇</div>
+            <h3>U-Bahn display</h3>
+            <p>A departure board for beds, instead of a poster.</p>
+          </div>
+          <div class="arrow">+</div>
+          <div class="step">
+            <div class="icon">🗺️</div>
+            <h3>Map on the phone</h3>
+            <p>Nearest shelter with a free bed, and the route there.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · Live demo -->
+      <section class="slide demo" data-title="Live demo">
+        <div class="demo-head">
+          <p class="kicker">Live demo</p>
+          <div class="open-links">
+            <a class="btn" href="/operator/" target="_blank" rel="noopener">Operator ↗ <kbd>O</kbd></a>
+            <a class="btn" href="/board/" target="_blank" rel="noopener">Board ↗ <kbd>B</kbd></a>
+            <a class="btn" href="/map/" target="_blank" rel="noopener">Map ↗ <kbd>M</kbd></a>
+          </div>
+        </div>
+        <div class="demo-grid">
+          <figure class="frame phone" data-src="/operator/" data-w="390" data-h="800">
+            <figcaption><span class="num">1</span> Shelter taps + / −</figcaption>
+            <div class="screen"></div>
+          </figure>
+          <div class="middle">
+            <figure class="frame tv" data-src="/board/" data-w="1280" data-h="720">
+              <figcaption><span class="num">2</span> Station display updates</figcaption>
+              <div class="screen"></div>
+            </figure>
+            <ol class="demo-steps">
+              <li>Real shelters from the official Kältehilfe list.</li>
+              <li>Bed numbers are <b>demo values</b>.</li>
+              <li>Every tap reaches all screens in about a second.</li>
+            </ol>
+          </div>
+          <figure class="frame map" data-src="/map/" data-w="720" data-h="940">
+            <figcaption><span class="num">3</span> Map on the phone</figcaption>
+            <div class="screen"></div>
+          </figure>
+        </div>
+        <button id="reload-frames" class="reload" type="button" title="Reload the three live pages">↻ Reload</button>
+      </section>
+
+      <!-- 5 · How it's built -->
+      <section class="slide" data-title="How it's built">
+        <p class="kicker">How it's built</p>
+        <h2>All Google. No server of our own.</h2>
+        <div class="arch">
+          <div class="box in">
+            <h3>Operator page</h3>
+            <p>Firebase Auth · Google sign-in<br>each account edits only its own shelter</p>
+          </div>
+          <div class="wire"><span>write</span></div>
+          <div class="box core">
+            <h3>Cloud Firestore</h3>
+            <p>live sync · security rules<br>change history per shelter<br>Frankfurt region</p>
+          </div>
+          <div class="wire"><span>live</span></div>
+          <div class="box out">
+            <h3>Board + Map</h3>
+            <p>Firebase Hosting<br>Google Maps JavaScript API</p>
+          </div>
+        </div>
+        <p class="note">Every merge to main deploys automatically (GitHub Actions → Firebase Hosting), each pull request gets its own preview URL.</p>
+      </section>
+
+      <!-- 6 · What's next -->
+      <section class="slide" data-title="What's next">
+        <p class="kicker">What's next</p>
+        <h2>From demo to the first real winter night</h2>
+        <ul class="next">
+          <li><b>“Usually full from about 21:30”</b><span>learned from the change history we already record</span></li>
+          <li><b>QR code on the station display</b><span>take the map with you on your phone</span></li>
+          <li><b>Filters</b><span>women only, families, pets, wheelchair access</span></li>
+          <li><b>More languages</b><span>German, English, Polish, Russian, Arabic, …</span></li>
+          <li><b>Pilot with the Kältehilfe</b><span>real operators, real numbers, a few stations first</span></li>
+        </ul>
+      </section>
+
+      <!-- 7 · Close -->
+      <section class="slide close" data-title="Thank you">
+        <div>
+          <p class="kicker">Try it now</p>
+          <h2>Tonight</h2>
+          <p class="tagline">Know there's a bed before you go.</p>
+          <p class="url">tonight-berlin.web.app/map</p>
+          <p class="foot">Built in one day in Berlin on Firebase, Firestore and Google Maps.</p>
+        </div>
+        <div class="qr-wrap">
+          <div id="qr" class="qr" aria-label="QR code for tonight-berlin.web.app/map"></div>
+          <span>Scan for the live map</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <nav class="controls" aria-label="Slides">
+    <button id="prev" type="button" aria-label="Previous slide">‹</button>
+    <span id="counter">1 / 7</span>
+    <button id="next" type="button" aria-label="Next slide">›</button>
+    <button id="fullscreen" type="button" aria-label="Full screen" title="Full screen (F)">⛶</button>
+  </nav>
+  <div id="progress"><span></span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="/shared/status.js"></script>
+  <script type="module" src="pitch.js"></script>
+</body>
+</html>
