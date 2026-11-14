@@ -28,6 +28,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Frontend type check and unit tests
+        run: npm ci && npm run typecheck && npm test
+        working-directory: frontend
 
   deploy:
     needs: test
@@ -40,6 +43,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # Builds the React frontend (frontend/) into public/app, served at /app/.
+      - run: npm ci && npm run build
+        working-directory: frontend
       # Writes the key to a temp file and sets GOOGLE_APPLICATION_CREDENTIALS,
       # which the Firebase CLI picks up.
       - uses: google-github-actions/auth@v2
