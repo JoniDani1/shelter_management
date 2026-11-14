@@ -28,4 +28,4 @@ The screen displays admission groups, opening hours, total capacity, available b
 
 Opened the management screen in a browser and captured it at 1920 × 1080. Exercised the Shelter Mitte plus control and observed the public board rendering updated shared demo counts. Applied an offsetting minus update after the check. Other demo count changes occurred during the session, so the check does not establish an isolated before/after count. All seven existing API and status tests passed, including count boundaries, invalid input and subscriber updates.
 
-This prototype uses fictional sample data and an in-memory store. There is no operator login or per-shelter access enforcement yet. This guide does not claim production readiness or verified shelter availability.
+Update (14 November 2026): the live version stores data in Firestore and requires Google sign-in on the operator page; each account may update only the shelter it chose (see "Operator login and security rules" in the README). This guide does not claim production readiness or verified shelter availability.
