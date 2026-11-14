@@ -1,51 +1,163 @@
 import { useState } from "react";
 import { Minus, Plus, LogOut, ShieldCheck } from "lucide-react";
 import { useShelters } from "../store/ShelterStore";
-import { mockShelterWorkers } from "../data/mockShelterWorkers";
 import { AnimatedNumber } from "./ui/animated-number";
 import { MorphButton } from "./ui/spectrum-morph-button";
-import { validateCapacity } from "../services/shelterService";
+import type { Shelter } from "../types/models";
+
+// Signed-in shelter staff: pick "my shelter" once (saved in members/{uid}),
+// then publish the number of free beds. Admins may pick any shelter.
 export function WorkerPanel() {
-  const { shelters, session, update, logout } = useShelters();
-  const shelter = shelters.find((s) => s.id === session?.shelterId)!;
-  const worker = mockShelterWorkers.find((w) => w.id === session?.workerId)!;
-  const [capacity, setCapacity] = useState(String(shelter.totalCapacity));
-  const [occupied, setOccupied] = useState(String(shelter.occupiedBeds));
-  const [notice, setNotice] = useState("");
-  const [busy, setBusy] = useState(false);
-  const values = {
-    totalCapacity: capacity.trim() === "" ? NaN : Number(capacity),
-    occupiedBeds: occupied.trim() === "" ? NaN : Number(occupied),
-  };
-  const error = validateCapacity(values);
-  const available = values.totalCapacity - values.occupiedBeds;
-  async function save() {
-    setNotice("");
-    if (error) throw Error(error);
-    setBusy(true);
-    try {
-      await update(values);
-      setNotice(
-        "Availability updated successfully. The new bed count is now visible on the public map.",
-      );
-    } finally {
-      setBusy(false);
-    }
-  }
+  const { shelters, session, logout } = useShelters();
+  const [changing, setChanging] = useState(false);
+  const [adminPick, setAdminPick] = useState<string | null>(null);
+  if (!session) return null;
+  const isAdmin = session.role === "admin";
+  const ownId = session.shelterIds[0] ?? null;
+  const shelterId = isAdmin ? (adminPick ?? ownId ?? shelters[0]?.id) : ownId;
+  const shelter = shelters.find((s) => s.id === shelterId);
+
   return (
     <section className="worker-panel">
       <div className="district">
         <ShieldCheck size={15} />
         Shelter management
       </div>
-      <h2>{shelter.name}</h2>
-      <p className="muted">Signed in as {worker.name} · assigned shelter</p>
-      <p className="fine-print">{shelter.address}</p>
+      {!shelters.length ? (
+        <p className="muted">Loading shelters…</p>
+      ) : changing || !shelter ? (
+        <ShelterPicker
+          current={ownId}
+          onDone={(id) => {
+            setChanging(false);
+            setAdminPick(id);
+          }}
+          onCancel={shelter ? () => setChanging(false) : undefined}
+        />
+      ) : (
+        <>
+          <h2>{shelter.name}</h2>
+          <p className="muted">
+            Signed in as {session.name} · {isAdmin ? "admin" : "your shelter"}
+          </p>
+          <p className="fine-print">{shelter.address}</p>
+          {isAdmin && (
+            <label className="admin-pick">
+              <span>Admin: edit another shelter</span>
+              <select
+                value={shelter.id}
+                onChange={(e) => setAdminPick(e.target.value)}
+              >
+                {shelters.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <AvailabilityEditor key={shelter.id} shelter={shelter} />
+          {!isAdmin && (
+            <button className="text-button" onClick={() => setChanging(true)}>
+              This is not my shelter
+            </button>
+          )}
+        </>
+      )}
+      <button className="text-button" onClick={logout}>
+        <LogOut size={15} />
+        Log out
+      </button>
+    </section>
+  );
+}
+
+function ShelterPicker({
+  current,
+  onDone,
+  onCancel,
+}: {
+  current: string | null;
+  onDone: (id: string) => void;
+  onCancel?: () => void;
+}) {
+  const { shelters, chooseShelter } = useShelters();
+  const [pick, setPick] = useState(current ?? "");
+  return (
+    <>
+      <h2>Which shelter do you run?</h2>
+      <p className="muted">
+        You choose this once. It is saved for your account and you can change
+        it later.
+      </p>
+      <fieldset>
+        <label htmlFor="my-shelter">Your shelter</label>
+        <select
+          id="my-shelter"
+          value={pick}
+          onChange={(e) => setPick(e.target.value)}
+        >
+          <option value="" disabled>
+            Select a shelter…
+          </option>
+          {shelters.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.name} · {s.district}
+            </option>
+          ))}
+        </select>
+      </fieldset>
+      <MorphButton
+        disabled={!pick}
+        onAction={async () => {
+          await chooseShelter(pick);
+          onDone(pick);
+        }}
+        loadingLabel="Saving"
+        successLabel="Saved"
+        errorLabel="Saving failed"
+        size="lg"
+        className="publish-button"
+      >
+        Save my shelter
+      </MorphButton>
+      {onCancel && (
+        <button className="text-button" onClick={onCancel}>
+          Cancel
+        </button>
+      )}
+    </>
+  );
+}
+
+function AvailabilityEditor({ shelter }: { shelter: Shelter }) {
+  const { update } = useShelters();
+  const [draft, setDraft] = useState(String(shelter.availableBeds));
+  const [notice, setNotice] = useState("");
+  const total = shelter.totalCapacity;
+  const available = draft.trim() === "" ? NaN : Number(draft);
+  const error = !Number.isInteger(available)
+    ? "Enter a whole number of free beds."
+    : available < 0
+      ? "Free beds cannot be negative."
+      : available > total
+        ? `This shelter has ${total} beds in total.`
+        : null;
+  async function save() {
+    setNotice("");
+    if (error) throw Error(error);
+    await update(shelter.id, available);
+    setNotice(
+      "Free beds updated. The new count is now visible on the map and the station board.",
+    );
+  }
+  return (
+    <>
       <div className="capacity-grid">
         <div>
           <span>Total capacity</span>
           <b>
-            <AnimatedNumber value={shelter.totalCapacity} />
+            <AnimatedNumber value={total} />
           </b>
         </div>
         <div>
@@ -61,27 +173,15 @@ export function WorkerPanel() {
           </b>
         </div>
       </div>
-      <fieldset disabled={busy}>
-        <legend>Update demonstration availability</legend>
-        <label htmlFor="capacity">Operational bed capacity</label>
-        <input
-          id="capacity"
-          type="number"
-          min="0"
-          step="1"
-          value={capacity}
-          onChange={(e) => {
-            setCapacity(e.target.value);
-            setNotice("");
-          }}
-        />
-        <label htmlFor="available">Available beds</label>
+      <fieldset>
+        <legend>Update free beds</legend>
+        <label htmlFor="available">Available beds right now</label>
         <div className="stepper">
           <button
             aria-label="Decrease available beds"
             disabled={!Number.isFinite(available) || available <= 0}
             onClick={() => {
-              setOccupied(String(values.occupiedBeds + 1));
+              setDraft(String(Math.min(total, available) - 1));
               setNotice("");
             }}
           >
@@ -91,43 +191,29 @@ export function WorkerPanel() {
             id="available"
             type="number"
             min="0"
-            max={capacity}
+            max={total}
             step="1"
-            value={Number.isFinite(available) ? available : ""}
+            value={draft}
             onChange={(e) => {
-              setOccupied(
-                e.target.value === ""
-                  ? ""
-                  : String(values.totalCapacity - Number(e.target.value)),
-              );
+              setDraft(e.target.value);
               setNotice("");
             }}
           />
           <button
             aria-label="Increase available beds"
-            disabled={
-              !Number.isFinite(available) || available >= values.totalCapacity
-            }
+            disabled={!Number.isFinite(available) || available >= total}
             onClick={() => {
-              setOccupied(String(values.occupiedBeds - 1));
+              setDraft(String(Math.max(0, available) + 1));
               setNotice("");
             }}
           >
             <Plus size={18} />
           </button>
         </div>
-        <label htmlFor="occupied">Occupied beds</label>
-        <input
-          id="occupied"
-          type="number"
-          min="0"
-          step="1"
-          value={occupied}
-          onChange={(e) => {
-            setOccupied(e.target.value);
-            setNotice("");
-          }}
-        />
+        <p className="fine-print">
+          Total capacity is fixed for now ({total} beds). Occupied ={" "}
+          {total} − available.
+        </p>
       </fieldset>
       {error && (
         <p role="alert" className="form-error">
@@ -151,13 +237,10 @@ export function WorkerPanel() {
       <p className="fine-print">
         {shelter.lastUpdated
           ? `Last published: ${new Date(shelter.lastUpdated).toLocaleString("en-GB", { timeZone: "Europe/Berlin" })} Berlin time.`
-          : "Not yet published in this demo."}{" "}
-        Draft changes remain private until you publish.
+          : "Not published yet."}{" "}
+        Counts go to “unknown” after 30 minutes without an update. Draft
+        changes stay private until you publish.
       </p>
-      <button className="text-button" onClick={logout}>
-        <LogOut size={15} />
-        Log out
-      </button>
-    </section>
+    </>
   );
 }

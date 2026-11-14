@@ -250,7 +250,7 @@ export function BerlinMap() {
         </div>
         <div className="list-foot">
           <MapPin size={14} />
-          Real places. Demonstration availability.
+          Real places. Demo bed numbers.
         </div>
       </aside>
       <div className="map-canvas">
@@ -320,7 +320,7 @@ export function BerlinMap() {
                   >
                     <option value="all">All shelters</option>
                     <option value="available">Beds available</option>
-                    <option value="limited">Limited availability (1–3)</option>
+                    <option value="limited">Limited availability (1–4)</option>
                   </select>
                   <label htmlFor="eligibility">Accommodation for</label>
                   <select
@@ -368,11 +368,11 @@ export function BerlinMap() {
         <div className="map-legend">
           <span>
             <i className="green" />
-            4+ beds
+            5+ beds
           </span>
           <span>
             <i className="amber" />
-            1–3 beds
+            1–4 beds
           </span>
           <span>
             <i className="red" />

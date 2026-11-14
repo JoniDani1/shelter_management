@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "typecheck": "tsc -b",
     "build": "tsc -b && vite build",
     "test": "vitest run src",
     "preview": "vite preview --host 0.0.0.0",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "firebase": "^11.10.0",
     "framer-motion": "^12.23.24",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.468.0",

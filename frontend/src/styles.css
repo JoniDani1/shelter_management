@@ -1600,3 +1600,29 @@ footer .wordmark {
   min-height: 44px;
   min-width: 62px;
 }
+
+/* Live backend additions: shelter picker and admin switcher in the worker panel. */
+.worker-panel select {
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid #dcded3;
+  border-radius: 5px;
+  padding: 0 12px;
+  background: #fdfcf9;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+.worker-panel .admin-pick {
+  display: grid;
+  gap: 6px;
+  margin: 4px 0 8px;
+}
+.data-status {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}

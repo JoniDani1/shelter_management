@@ -1,6 +1,17 @@
 # Tonight frontend
 
-A frontend-only Berlin shelter availability prototype. All bed counts are fictional. It is not a service for making actual accommodation decisions.
+React/Vite version of the Tonight UI (design proposal from branch `s3eed-UI/UX`), connected to the same Firebase backend as `/board/`, `/map/` and `/operator/`. Served at **/app/** on Firebase Hosting.
+
+## Backend connection (this branch)
+
+- **Shelters:** live from Firestore, collection `shelters` (26 real Kältehilfe night shelters), via `onSnapshot` in `src/services/shelterService.ts`. Free-bed numbers are still demo values and the UI says so.
+- **Status rules:** same as the board (`src/services/status.ts`): 5+ available, 1–4 limited, 0 or admissions closed full, no update for 30 minutes unknown.
+- **Worker login:** Google sign-in (Firebase Auth) in `src/services/authService.ts`, same flow as `/operator/`: the account picks its shelter once (`members/{uid}`), admins may edit every shelter.
+- **Updates:** only the free-bed count can be changed (total capacity is fixed in the database). Every change writes a history entry in the same transaction, as `firestore.rules` require.
+- **Build:** `npm run build` writes to `../public/app`; the GitHub workflows build it before deploying.
+- The mock data, mock accounts and localStorage sync were removed. The Playwright tests in `tests/` still describe the mock flow and need rewriting.
+
+The sections below describe the original mock prototype.
 
 ## Run
 

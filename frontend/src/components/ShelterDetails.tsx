@@ -37,7 +37,7 @@ export function ShelterDetails({
         </strong>
         <span>
           {s.availabilityStatus === "unknown"
-            ? "unconfirmed demo beds"
+            ? "not updated in 30 min"
             : "demo beds available"}
         </span>
       </div>
@@ -70,6 +70,12 @@ export function ShelterDetails({
           </dt>
           <dd>{s.openingHours}</dd>
         </div>
+        {s.nearestStation && (
+          <div>
+            <dt>Nearest station</dt>
+            <dd>{s.nearestStation}</dd>
+          </div>
+        )}
         <div>
           <dt>Admission</dt>
           <dd>{s.eligibility}. Contact the shelter to confirm requirements.</dd>
@@ -88,10 +94,12 @@ export function ShelterDetails({
         >
           Get directions <ArrowUpRight size={16} />
         </a>
-        <a className="secondary" href={`tel:${s.phone.replaceAll(" ", "")}`}>
-          <Phone size={16} />
-          Call shelter
-        </a>
+        {s.phone && (
+          <a className="secondary" href={`tel:${s.phone.replaceAll(" ", "")}`}>
+            <Phone size={16} />
+            Call shelter
+          </a>
+        )}
       </div>
       <a
         className="source-link"
@@ -104,7 +112,7 @@ export function ShelterDetails({
       <p className="fine-print">
         {s.lastUpdated
           ? `Demo updated ${new Date(s.lastUpdated).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" })} Berlin time.`
-          : "Initial demonstration fixture; no live update."}{" "}
+          : "No update published yet."}{" "}
         Availability may change. No bed is reserved.
       </p>
       <button className="text-button" onClick={onClose}>

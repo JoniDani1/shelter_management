@@ -1,3 +1,5 @@
+// Shared state for the whole app: live shelters from Firestore and the signed-in
+// account. All map/list, dashboard and chart components read from here.
 import {
   createContext,
   useContext,
@@ -6,48 +8,92 @@ import {
   type ReactNode,
 } from "react";
 import {
-  readShelters,
-  shelterService,
-  shelterStorageKey,
+  refreshStatus,
+  setFreeBeds,
+  subscribeShelters,
 } from "../services/shelterService";
-import { authService } from "../services/authService";
-import type { AuthSession, CapacityValues, Shelter } from "../types/models";
+import {
+  chooseShelter,
+  logout,
+  signInWithGoogle,
+  watchSession,
+} from "../services/authService";
+import type { AuthSession, Shelter } from "../types/models";
+
 interface Store {
   shelters: Shelter[];
+  loading: boolean;
+  error: string | null;
   session: AuthSession | null;
-  login: (email: string, password: string) => Promise<void>;
+  authReady: boolean;
+  login: () => Promise<void>;
   logout: () => Promise<void>;
-  update: (values: CapacityValues) => Promise<void>;
+  chooseShelter: (shelterId: string) => Promise<void>;
+  update: (shelterId: string, freeBeds: number) => Promise<void>;
 }
 const Context = createContext<Store | null>(null);
+
 export function ShelterProvider({ children }: { children: ReactNode }) {
-  const [shelters, setShelters] = useState(readShelters);
+  const [shelters, setShelters] = useState<Shelter[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [session, setSession] = useState<AuthSession | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+
+  useEffect(
+    () =>
+      subscribeShelters(
+        (list) => {
+          setShelters(list);
+          setLoading(false);
+          setError(null);
+        },
+        (err) => {
+          console.error(err);
+          setError("Live data is not reachable right now.");
+          setLoading(false);
+        },
+      ),
+    [],
+  );
+
+  // A count goes "unknown" after 30 minutes without update, even without new data.
   useEffect(() => {
-    const sync = (e: StorageEvent) => {
-      if (e.key === shelterStorageKey) setShelters(readShelters());
-    };
-    window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
-  }, []);
-  async function update(values: CapacityValues) {
-    if (!session) throw Error("Sign in first.");
-    const updated = await shelterService.updateAvailability(
-      session.shelterId,
-      values,
+    const t = setInterval(
+      () => setShelters((list) => list.map((s) => refreshStatus(s))),
+      30_000,
     );
-    setShelters((prev) => prev.map((s) => (s.id === updated.id ? updated : s)));
-  }
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(
+    () =>
+      watchSession((s) => {
+        setSession(s);
+        setAuthReady(true);
+      }),
+    [],
+  );
+
   return (
     <Context.Provider
       value={{
         shelters,
+        loading,
+        error,
         session,
-        update,
-        login: async (e, p) => setSession(await authService.login(e, p)),
-        logout: async () => {
-          await authService.logout();
-          setSession(null);
+        authReady,
+        login: async () => {
+          await signInWithGoogle();
+        },
+        logout,
+        chooseShelter: async (id) => {
+          if (!session) throw Error("Sign in first.");
+          await chooseShelter(session, id);
+        },
+        update: async (id, freeBeds) => {
+          if (!session) throw Error("Sign in first.");
+          await setFreeBeds(id, freeBeds);
         },
       }}
     >
@@ -55,6 +101,7 @@ export function ShelterProvider({ children }: { children: ReactNode }) {
     </Context.Provider>
   );
 }
+
 export function useShelters() {
   const value = useContext(Context);
   if (!value) throw Error("Missing shelter provider");

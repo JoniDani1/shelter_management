@@ -5,27 +5,35 @@ import { motion, easeOut } from "framer-motion";
 import { MoveRight } from "lucide-react";
 import { TextMorph } from "./text-morph";
 
-// Adapted from Spectrum UI Login Card: retains staggered card/input/button structure.
-// Password authentication replaces the source's email-link/social authentication.
+// Adapted from Spectrum UI Login Card: retains staggered card/button structure.
+// Google sign-in (Firebase Auth) replaces the source's email-link authentication,
+// the same login the /operator/ page uses.
 export default function LoginPage({
   onLogin,
 }: {
-  onLogin: (email: string, password: string) => Promise<void>;
+  onLogin: () => Promise<void>;
 }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [status, setStatus] = useState("Log In");
+  const [status, setStatus] = useState("Sign in with Google");
   const [error, setError] = useState("");
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    setStatus("Logging In");
+    setStatus("Signing In");
     try {
-      await onLogin(email, password);
-      setStatus("Logged In");
+      await onLogin();
+      setStatus("Signed In");
     } catch (e) {
-      setError((e as Error).message);
-      setStatus("Log In");
+      const code = (e as { code?: string }).code ?? "";
+      setError(
+        code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request"
+          ? "Sign-in was cancelled."
+          : code === "auth/configuration-not-found" || code === "auth/operation-not-allowed"
+            ? "Google sign-in is not enabled for this project yet."
+            : code === "auth/unauthorized-domain"
+              ? "This web address is not yet allowed for sign-in."
+              : (e as Error).message,
+      );
+      setStatus("Sign in with Google");
     }
   }
 
@@ -75,39 +83,11 @@ export default function LoginPage({
                 A little care. A big difference.
               </h1>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Sign in to update your assigned shelter.
+                Sign in to update the free beds of your shelter.
               </p>
             </motion.div>
 
             <form onSubmit={submit}>
-              <motion.div variants={itemVariants} className="mb-6">
-                <label htmlFor="email">Email address</label>
-                <div className="relative">
-                  <input
-                    id="email"
-                    type="email"
-                    autoComplete="username"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@your-shelter.org"
-                    required
-                    className="w-full rounded-full px-6 py-4"
-                  />
-                </div>
-              </motion.div>
-              <motion.div variants={itemVariants} className="mb-6">
-                <label htmlFor="password">Password</label>
-                <input
-                  id="password"
-                  type="password"
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                  className="w-full rounded-full px-6 py-4"
-                />
-              </motion.div>
               {error && (
                 <p role="alert" className="form-error">
                   {error}
@@ -118,7 +98,7 @@ export default function LoginPage({
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                disabled={status === "Logging In"}
+                disabled={status === "Signing In"}
                 className="primary login-submit"
               >
                 <TextMorph as="span">{status}</TextMorph>
@@ -126,21 +106,10 @@ export default function LoginPage({
               </motion.button>
             </form>
             <motion.div variants={itemVariants} className="demo-credentials">
-              <strong>Try the worker demo</strong>
-              <p>Fictional accounts, for this prototype only.</p>
-              <button
-                type="button"
-                onClick={() => {
-                  setEmail("anna@demo-shelter.example");
-                  setPassword("Demo123!");
-                }}
-              >
-                Use Anna's demo account ↗
-              </button>
+              <strong>For shelter staff</strong>
               <p>
-                anna@demo-shelter.example
-                <br />
-                Password: Demo123!
+                Use any Google account. After signing in you pick the shelter
+                you run once; you can change it later.
               </p>
             </motion.div>
           </motion.div>

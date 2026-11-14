@@ -43,7 +43,7 @@ function Skyline() {
   );
 }
 export default function App() {
-  const { shelters, session, login } = useShelters();
+  const { shelters, session, login, loading, error } = useShelters();
   const [mapOpen, setMapOpen] = useState(false);
   const [workerOpen, setWorkerOpen] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -133,11 +133,11 @@ export default function App() {
                     <X size={20} />
                   </button>
                   {session ? (
-                    <WorkerPanel key={session.workerId} />
+                    <WorkerPanel key={session.uid} />
                   ) : (
                     <LoginCard
-                      onLogin={async (e, p) => {
-                        await login(e, p);
+                      onLogin={async () => {
+                        await login();
                         setLoginSuccess(true);
                       }}
                     />
@@ -227,7 +227,13 @@ export default function App() {
                 <AnimatedNumber value={available} />
               </strong>
               <span>demo beds available</span>
-              <small>Excludes unconfirmed availability</small>
+              <small>
+                {loading
+                  ? "Loading live data…"
+                  : error
+                    ? error
+                    : "Live from shelters · excludes counts older than 30 min"}
+              </small>
             </div>
             <div className="strip-stat">
               <span className="stat-icon">
@@ -237,7 +243,7 @@ export default function App() {
                 <AnimatedNumber value={shelters.length} />
               </strong>
               <span>shelters across Berlin</span>
-              <small>Real locations, publicly listed</small>
+              <small>Berlin Kältehilfe night shelters</small>
             </div>
             <button className="explore-link" onClick={() => setMapOpen(true)}>
               Explore shelters
@@ -282,22 +288,30 @@ export default function App() {
                 <h3>A snapshot of shelter beds</h3>
                 <span className="demo-tag">DEMO DATA</span>
               </div>
-              <Chart
-                values={shelters.map((s) => s.availableBeds)}
-                labels={shelters.map((_, i) => String(i + 1).padStart(2, "0"))}
-              />
+              {shelters.length > 1 ? (
+                <Chart
+                  values={shelters.map((s) => s.availableBeds)}
+                  labels={shelters.map((_, i) => String(i + 1).padStart(2, "0"))}
+                />
+              ) : (
+                <p className="fine-print" role="status">
+                  {error ?? "Loading live shelter data…"}
+                </p>
+              )}
               <p className="fine-print">
-                Shelters 01–10 in directory order. Includes unconfirmed fixture
-                values. These are simulated beds, not historical homelessness
-                figures.
+                Shelters 01–{String(shelters.length).padStart(2, "0")} in
+                directory order, live from the database. Includes counts older
+                than 30 minutes. Free-bed numbers are still demo values, not
+                real occupancy.
               </p>
             </div>
           </section>
           <div className="prototype-notice">
             <Info size={18} />
             <p>
-              <strong>A prototype, built with care.</strong> All bed counts are
-              demonstration data. Do not rely on this app for actual
+              <strong>A prototype, built with care.</strong> Shelter names,
+              addresses and hours are real; free-bed counts are still demo
+              numbers. Do not rely on this app for actual
               accommodation. For current services, visit the{" "}
               <a
                 href="https://kaeltehilfe-berlin.de/"
@@ -366,8 +380,8 @@ export default function App() {
               <div className="map-demo-banner">
                 <Info size={14} />
                 <span>
-                  Demonstration only. Bed availability is simulated. Contact
-                  shelters directly before travelling.
+                  Demo · sample numbers. Shelters are real, free-bed counts are
+                  not yet. Contact shelters directly before travelling.
                 </span>
               </div>
               <Suspense
