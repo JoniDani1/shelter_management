@@ -89,7 +89,7 @@ function render() {
     let marker = markers.get(s.id);
     if (!marker) {
       marker = new AdvancedMarkerElement({ map, position: s.location, content: el('div', 'pin'), gmpClickable: true });
-      marker.addListener('click', () => select(s.id));
+      marker.addEventListener('gmp-click', () => select(s.id));
       markers.set(s.id, marker);
     }
     marker.position = s.location;
