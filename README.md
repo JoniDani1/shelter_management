@@ -59,3 +59,19 @@ The planned target is Firebase Hosting + Firestore (no own server). The pages on
 2. Add `public/shared/data-firestore.js` with the same API: `onSnapshot` on the `shelters` collection for `subscribe`, a transaction clamped to `0..totalBeds` for `adjustFreeBeds`, `serverTimestamp()` for `updatedAt`.
 3. Load that file instead of `data-local.js` in both `index.html` files, and seed Firestore from `data/seed.json`.
 4. Deploy `public/` with Firebase Hosting. `src/` is then only needed for local development.
+
+## Current deployment (interim)
+
+Until Firebase is set up, the app runs as a single Cloud Run service `tonight` in `europe-west3` (image in Artifact Registry repo `tonight`):
+
+- Board: https://tonight-1016165220146.europe-west3.run.app/board/
+- Operators: https://tonight-1016165220146.europe-west3.run.app/operator/
+
+Data is in memory, so it resets to the seed data when the instance restarts. `--max-instances=1` keeps all viewers on the same state.
+
+```bash
+docker build -t europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag> .
+docker push europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag>
+gcloud run deploy tonight --image=europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag> \
+  --region=europe-west3 --allow-unauthenticated --max-instances=1 --timeout=3600 --memory=256Mi
+```
