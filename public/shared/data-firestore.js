@@ -10,6 +10,14 @@ import { firebaseConfig } from './firebase-config.js';
 const db = getFirestore(initializeApp(firebaseConfig));
 const shelters = collection(db, 'shelters');
 
+// Firestore GeoPoint (or a plain {lat, lng} object) -> { lat, lng } or null.
+function toLatLng(loc) {
+  if (!loc) return null;
+  const lat = loc.latitude ?? loc.lat;
+  const lng = loc.longitude ?? loc.lng;
+  return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+}
+
 // Firestore Timestamp -> ISO string, so the pages see the same shape as the local server.
 function toShelter(snap) {
   const d = snap.data({ serverTimestamps: 'estimate' });
@@ -24,6 +32,9 @@ function toShelter(snap) {
     opensAt: d.opensAt,
     closesAt: d.closesAt,
     admissionOpen: d.admissionOpen !== false,
+    location: toLatLng(d.location),
+    phone: d.phone ?? null,
+    nearestStation: d.nearestStation ?? null,
     updatedAt: d.updatedAt ? d.updatedAt.toDate().toISOString() : null,
   };
 }

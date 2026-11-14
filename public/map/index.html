@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1630">
+  <title>Tonight · Shelter map Berlin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="map.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><span></span></div>
+      <div>
+        <h1>Free beds tonight</h1>
+        <p id="summary" class="sub">Night shelters in Berlin · live</p>
+      </div>
+    </div>
+    <button id="locate" class="locate" type="button" title="Show my location">Near me</button>
+  </header>
+
+  <ul class="legend" aria-label="Legend">
+    <li class="available">Free beds</li>
+    <li class="limited">Few left</li>
+    <li class="full">Full</li>
+    <li class="unknown">Unknown / closed</li>
+  </ul>
+
+  <main id="map" class="map" aria-label="Map of night shelters"></main>
+  <p id="conn" class="conn">Connecting…</p>
+
+  <section id="sheet" class="sheet" hidden aria-live="polite">
+    <button id="close" class="close" type="button" aria-label="Close">×</button>
+    <div id="detail"></div>
+  </section>
+
+  <script src="/shared/status.js"></script>
+  <script type="module" src="map.js"></script>
+</body>
+</html>

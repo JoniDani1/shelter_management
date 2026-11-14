@@ -8,6 +8,7 @@ Live free-bed board for Berlin night shelters. Shelters report free beds with a 
 
 - Board: https://tonight-berlin.web.app/board/
 - Operators: https://tonight-berlin.web.app/operator/
+- Map (public, mobile): https://tonight-berlin.web.app/map/
 
 Hosted on Firebase Hosting, data in Cloud Firestore (`europe-west3`, collection `shelters`), GCP project `gen-lang-client-0099418772`.
 
@@ -21,6 +22,7 @@ npm start
 ```
 
 - Public board: http://localhost:3000/board/
+- Public map: http://localhost:3000/map/
 - Operator page: http://localhost:3000/operator/ (add `?shelter=mitte` to show only one shelter)
 
 Open both side by side: every plus/minus press on the operator page shows up on the board immediately.
@@ -32,6 +34,7 @@ Open both side by side: every plus/minus press on the operator page shows up on 
 ```
 public/
   board/       Public display (full-screen, 16:9, scales with the screen; stacks on phones)
+  map/         Public Google Map with live status per shelter (read-only, mobile-first)
   operator/    Plus/minus page for shelter staff
   shared/
     status.js      Availability rules (Available / Limited / Full / Closed / Unknown)
