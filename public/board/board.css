@@ -172,6 +172,8 @@ h1 { font-size: calc(var(--u) * 3.6); font-weight: 800; line-height: 1; letter-s
   font-weight: 600;
   padding: 0 calc(var(--u) * 0.5);
 }
+.page { color: var(--text); font-weight: 700; white-space: nowrap; }
+.page:empty { display: none; }
 .conn { display: inline-flex; align-items: center; gap: calc(var(--u) * 0.6); white-space: nowrap; }
 .conn::before { content: ''; width: calc(var(--u) * 1); height: calc(var(--u) * 1); border-radius: 50%; background: var(--unknown); }
 .conn.ok::before { background: var(--available); }

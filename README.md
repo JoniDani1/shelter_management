@@ -2,7 +2,7 @@
 
 Live free-bed board for Berlin night shelters. Shelters report free beds with a plus/minus page; a departure-board style display (for U-Bahn stations) shows the current availability of all shelters live.
 
-> Hackathon prototype. All shelters and numbers in `data/seed.json` are fictional sample data.
+> Hackathon prototype. The shelters in `data/seed.json` are real Berlin night shelters from the Berliner Kältehilfe list (November 2026, see `docs/kaeltehilfe-shelters.md`). The free-bed numbers are sample values, not live data.
 
 ## Live
 
@@ -42,7 +42,7 @@ public/
 src/           Local dev server (Express, in-memory store). Not used in production.
 scripts/seed-firestore.js  Writes data/seed.json into Firestore
 firestore.rules            Security rules
-data/seed.json 8 sample shelters with 20, 30 or 40 beds
+data/seed.json 26 real night shelters (sample free-bed numbers)
 ```
 
 Availability rules follow the concept in [`docs/berlin-shelter-board-concept.md`](https://github.com/JoniDani1/shelter_management/blob/Status-Table/docs/berlin-shelter-board-concept.md) (branch `Status-Table`):
@@ -66,7 +66,7 @@ Operators press **Confirm count** when the number is still correct, so the row d
 Needs the Firebase CLI (`npm i -g firebase-tools`) and Google credentials with access to the project (`GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json`, never commit the key).
 
 ```bash
-npm run seed:firestore    # (re)write the 8 sample shelters, resets their counts
+npm run seed:firestore    # (re)write the shelters, reset their counts, delete removed ones
 npm run deploy:firebase   # deploys public/ to Firebase Hosting and firestore.rules
 ```
 

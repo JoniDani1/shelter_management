@@ -20,7 +20,7 @@ After starting the app with `npm start`:
 - Press Confirm count to confirm that the displayed number is still correct.
 - Close admissions or reopen admissions independently of the free-bed count.
 - Open the public board to see the current shared data.
-- Reset demo data restores the fictional sample records.
+- Reset demo data restores the sample free-bed numbers (the shelters themselves are real, see docs/kaeltehilfe-shelters.md).
 
 The screen displays admission groups, opening hours, total capacity, available beds, current status and update time. Changes are distributed through the shared server event stream.
 

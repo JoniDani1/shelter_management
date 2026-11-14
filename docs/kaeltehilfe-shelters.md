@@ -126,3 +126,15 @@ Beds "m / w" = places for men / women. Hours are evening to next morning.
 |  | `obdach-bei-unter-druck` | Nachtcafé Obdach e.V. bei UNTER DRUCK | Oudenarder Str. 26, 13347 Berlin | Mitte | 15 | all | 19:00–08:00 | year-round | Fri |  | U Nauener Platz (307 m) | 030 415 088 21 / 0152 34 57 84 22 |
 |  | `nachtcafe-fuerbitt-melanchthon` | Nachtcafé der ev. KG Fürbitt-Melanchthon | Kranoldstr. 16, 12051 Berlin | Neukölln | 50 | all | 21:30–08:00 | 2026-11-01 → 2027-03-31 | Sat | ♿ accessible | S+U Hermannstr. (251 m) | 030 625 3002 |
 |  | `nachtcafe-neu-westend` | Nachtcafé Neu Westend | Eichenallee 47-53, 14050 Berlin | Charlottenburg-Wilmersdorf | 30 | all | 19:30–07:30 | 2026-11-01 → 2027-03-31 | Sun |  | U Neu-Westend (266 m) | 030 30 42 007 |
+
+## What the app uses (`data/seed.json`)
+
+Since 2026-11-14 the app's seed data is the 26 night shelters from this list that have every field the app needs (beds, address, opening hours, admission group, coordinates). Seed `name` is a short display name; the full name is in `officialName`.
+
+- Left out: `weitlingstrasse` (opens only on 16 Nov 2026), the 2 family shelters (rooms instead of beds, phone booking only) and the 10 night cafés (open only on certain weekdays).
+- Filled in from other public sources because the Kältehilfe list gives no closing time: `frauen-mitten-im-kiez` closes 08:30 ([AWO Spree-Wuhle flyer](https://www.awo-spree-wuhle.de/wp-content/uploads/flyer/AWO_Spree_Wuhle_Notuebernachtung_Frauen_Flyer_WEB.pdf)), `marie` closes 08:00 ([Abgeordnetenhaus Berlin, Drucksache 19/18075, Feb 2024](https://pardok.parlament-berlin.de/starweb/adis/citat/VT/19/SchrAnfr/S19-18075.pdf); older source). Both are recorded in `closesAtSource`.
+- `freeBeds` values are made-up demo numbers. There is no public live occupancy data.
+
+### Related: historic occupancy
+
+The same Abgeordnetenhaus answer (Drucksache 19/18075) lists the **monthly average occupancy in 2022** (in % of places) for seven year-round shelters (Franklinstraße, Storkower Straße, Containerbahnhof, GEBEWO Tieckstraße, Petersburger Straße, Evas Obdach, Marie), e.g. 77–98 % for most months. It has no time-of-day data, so "when are the beds usually gone" can only come from Tonight's own updates.
