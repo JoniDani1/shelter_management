@@ -23,6 +23,8 @@ function toShelter(snap) {
     admits: d.admits,
     opensAt: d.opensAt,
     closesAt: d.closesAt,
+    open24h: d.open24h === true,
+    nearestStation: d.nearestStation ?? null,
     admissionOpen: d.admissionOpen !== false,
     updatedAt: d.updatedAt ? d.updatedAt.toDate().toISOString() : null,
   };

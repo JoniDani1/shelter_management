@@ -17,6 +17,15 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'long'
 
 let staleAfterMs = 30 * 60 * 1000;
 let shelters = null;
+
+// The display shows a fixed number of rows per page and flips through the
+// pages like a departure board, so the text stays large with 20+ shelters.
+// Phones (narrow screens) get the full list and scroll instead.
+const ROWS_PER_PAGE = 7;
+const PAGE_MS = 10000;
+const narrow = window.matchMedia('(max-width: 700px)');
+const pageEl = document.getElementById('page');
+let page = 0;
 const lastShown = new Map(); // id -> last rendered count, to animate changes
 
 data.getConfig().then((cfg) => {
@@ -41,7 +50,20 @@ function render() {
     return;
   }
 
-  for (const s of shelters) {
+  let visible = shelters;
+  if (narrow.matches) {
+    rowsEl.style.gridTemplateRows = '';
+    pageEl.textContent = '';
+  } else {
+    const pages = Math.ceil(shelters.length / ROWS_PER_PAGE);
+    page %= pages;
+    visible = shelters.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
+    // Same row height on every page, also on the last, shorter one.
+    rowsEl.style.gridTemplateRows = `repeat(${ROWS_PER_PAGE}, minmax(0, 1fr))`;
+    pageEl.textContent = pages > 1 ? `Page ${page + 1} of ${pages}` : '';
+  }
+
+  for (const s of visible) {
     const status = shelterStatus(s, now, staleAfterMs);
     const li = el('li', `row ${status.key}`);
 
@@ -99,4 +121,6 @@ function connect() {
 tickClock();
 setInterval(tickClock, 1000);
 setInterval(render, 15000);
+setInterval(() => { page += 1; render(); }, PAGE_MS);
+narrow.addEventListener('change', render);
 connect();

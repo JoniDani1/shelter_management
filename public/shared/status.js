@@ -31,6 +31,7 @@
   }
 
   function hoursLabel(shelter) {
+    if (shelter.open24h) return 'Open 24h';
     return shelter.opensAt && shelter.closesAt ? `${shelter.opensAt}–${shelter.closesAt}` : '';
   }
 

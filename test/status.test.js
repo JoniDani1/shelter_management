@@ -29,3 +29,10 @@ test('closed admissions win over a positive count', () => {
   assert.equal(st.key, 'closed');
   assert.equal(st.showCount, false);
 });
+
+test('hours label: evening to morning, or open around the clock', () => {
+  const { hoursLabel } = require('../public/shared/status.js');
+  assert.equal(hoursLabel({ opensAt: '19:00', closesAt: '08:00' }), '19:00–08:00');
+  assert.equal(hoursLabel({ opensAt: '00:00', closesAt: '24:00', open24h: true }), 'Open 24h');
+  assert.equal(hoursLabel({}), '');
+});
