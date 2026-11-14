@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tonight · Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pitch2.css">
+</head>
+<body>
+  <!-- Pitch deck in the look of the new React UI (/app/, see frontend/).
+       A fixed 1600x900 stage, scaled to the window (see pitch2.js). -->
+  <div id="viewport">
+    <div id="stage">
+
+      <header class="brandbar">
+        <div class="wordmark">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          Tonight <span class="berlin">BERLIN</span>
+        </div>
+        <span class="tag"><i class="dot"></i>A little certainty for tonight.</span>
+      </header>
+
+      <!-- 1 · Title -->
+      <section class="slide center" data-title="Tonight">
+        <p class="kicker">Berlin · Hackathon 2026</p>
+        <h1>Tonight<span class="period">.</span></h1>
+        <p class="serif-line">Know there's a bed <em>before</em> you go.</p>
+        <div class="live">
+          <div><b id="live-free">–</b><span>demo beds available right now</span></div>
+          <div><b id="live-count">26</b><span>real night shelters across Berlin</span></div>
+        </div>
+        <svg class="skyline" viewBox="0 0 900 210" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.1"><path d="M0 200h900M15 200v-50h44v50m-38-43h7m7 0h7m7 0h7M68 200v-76h42v76m-31-66v58m12-58v58m11-58v58M121 200v-58h45v58m8 0v-93h45v93m-43-92 21-24 22 24m-34 16h22m-22 14h22m-22 14h22m-22 14h22M230 200v-51h47v51m11 0v-89h18v89m-14-90V96h10v14m15 90v-91h18v91m-13-91V95h9v14m14 91v-91h18v91m-14-91V95h10v14m15 91v-89h18v89m-13-90V96h9v14M285 96h99l-11-9h-75zm10-9 3-10h73l3 10m-62 108h11m12 0h11m12 0h11M398 200v-64h35v64m13 0V78h10v122m-5-124V21m-8 59h16m-18 9c0-15 22-15 22 0s-22 15-22 0m11 14v23m22 74v-51h39v51m12 0v-84h35v84m-29-75h21m-21 13h21m-21 13h21m-21 13h21m24 36v-62h54v62m-48-50h40m-40 15h40m-40 15h40M625 200v-89h31v89m-30-89 15-17 15 17m-16-17V77m29 123v-113h26v113m-20-113V67h14v20m-7-20V48m25 152v-63h33v63m10 0v-81h41v81m-36-70h30m-30 15h30m-30 15h30m-30 15h30m15 25v-48h55v48m-40-48v-24h25v24m27 48v-76h38v76m11 0v-42h24v42"/><path d="M0 207h900" stroke-dasharray="2 6"/></g>
+        </svg>
+      </section>
+
+      <!-- 2 · Problem -->
+      <section class="slide center" data-title="The problem">
+        <p class="kicker">The problem</p>
+        <p class="big-number">6,032<span class="period">.</span></p>
+        <p class="serif-line">people live without <em>accommodation</em> in Berlin.</p>
+        <div class="stats">
+          <div><b>27</b><span>night shelters in the Kältehilfe</span></div>
+          <div><b>~870</b><span>places for the whole city, every night</span></div>
+          <div><b class="rust">0</b><span>ways to know a bed is free before you arrive</span></div>
+        </div>
+        <p class="source">Berlin Senate, February 2024 estimate · Berliner Kältehilfe list, 30 Oct 2026</p>
+      </section>
+
+      <!-- 3 · Idea -->
+      <section class="slide" data-title="The idea">
+        <p class="kicker">The idea</p>
+        <h2>Small updates.<br><em>A clearer picture.</em></h2>
+        <div class="cards three">
+          <div class="card">
+            <span class="step">01</span>
+            <h3>Shelter worker</h3>
+            <p>Signs in with Google, picks their shelter, taps <b>+</b> or <b>−</b> when someone arrives or leaves.</p>
+          </div>
+          <div class="card">
+            <span class="step">02</span>
+            <h3>U-Bahn display</h3>
+            <p>Instead of a printed poster: a live board of free beds, right where people wait.</p>
+          </div>
+          <div class="card">
+            <span class="step">03</span>
+            <h3>Map on the phone</h3>
+            <p>Every shelter with free beds, who it admits, opening hours and the way there.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · Live demo -->
+      <section class="slide demo" data-title="Live demo">
+        <div class="demo-head">
+          <div>
+            <p class="kicker">Live demo</p>
+            <h2 class="small">One tap. Every screen.</h2>
+          </div>
+          <div class="open-links">
+            <a class="btn primary" data-app-link href="#" target="_blank" rel="noopener">Open app ↗ <kbd>A</kbd></a>
+            <a class="btn" href="/board/" target="_blank" rel="noopener">Station board ↗ <kbd>B</kbd></a>
+          </div>
+        </div>
+        <div class="demo-grid">
+          <figure class="frame phone" data-w="400">
+            <figcaption><span class="step">01</span> Worker: <i>Login</i>, then <i>+ / −</i></figcaption>
+            <div class="screen"></div>
+          </figure>
+          <figure class="frame wide" data-w="1280">
+            <figcaption><span class="step">02</span> Public: <i>View Map</i>, the count updates live</figcaption>
+            <div class="screen"></div>
+          </figure>
+        </div>
+        <p class="demo-foot">
+          <span>Real Kältehilfe shelters · free-bed numbers are <b>demo values</b></span>
+          <span><button id="reload-frames" type="button">↻ Reload</button> <span id="app-source" class="faint"></span></span>
+        </p>
+      </section>
+
+      <!-- 5 · How it's built -->
+      <section class="slide" data-title="How it's built">
+        <p class="kicker">How it's built</p>
+        <h2>All Google.<br><em>No server of our own.</em></h2>
+        <div class="arch">
+          <div class="card">
+            <h3>Sign in</h3>
+            <p>Firebase Auth with Google. Each account can change only its own shelter.</p>
+          </div>
+          <span class="wire">→</span>
+          <div class="card core">
+            <h3>Cloud Firestore</h3>
+            <p>Live sync to every screen, security rules, a history of every change. Frankfurt region.</p>
+          </div>
+          <span class="wire">→</span>
+          <div class="card">
+            <h3>Show</h3>
+            <p>Firebase Hosting, Google Maps JavaScript API, React app and station board.</p>
+          </div>
+        </div>
+        <p class="source left">Every merge deploys automatically with GitHub Actions; every pull request gets its own preview URL.</p>
+      </section>
+
+      <!-- 6 · What's next -->
+      <section class="slide" data-title="What's next">
+        <p class="kicker">What's next</p>
+        <h2>From demo to the first<br><em>real winter night.</em></h2>
+        <ol class="next">
+          <li><b>“Usually full from about 21:30”</b><span>learned from the change history we already record</span></li>
+          <li><b>QR code on the station display</b><span>take the map with you on your phone</span></li>
+          <li><b>Filters</b><span>women only, families, pets, wheelchair access</span></li>
+          <li><b>More languages</b><span>German, English, Polish, Russian, Arabic, …</span></li>
+          <li><b>Pilot with the Kältehilfe</b><span>real operators, real numbers, a few stations first</span></li>
+        </ol>
+      </section>
+
+      <!-- 7 · Close -->
+      <section class="slide close" data-title="Thank you">
+        <div>
+          <p class="kicker">Try it now</p>
+          <h1>Tonight<span class="period">.</span></h1>
+          <p class="serif-line">Everyone deserves <em>a place to rest.</em></p>
+          <p id="close-url" class="url">tonight-berlin.web.app</p>
+          <p class="source left">Built in one day in Berlin on Firebase, Firestore and Google Maps.</p>
+        </div>
+        <div class="qr-wrap">
+          <div id="qr" class="qr" aria-label="QR code for the Tonight app"></div>
+          <span>Scan for the live app</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <nav class="controls" aria-label="Slides">
+    <button id="prev" type="button" aria-label="Previous slide">‹</button>
+    <span id="counter">1 / 7</span>
+    <button id="next" type="button" aria-label="Next slide">›</button>
+    <button id="fullscreen" type="button" aria-label="Full screen" title="Full screen (F)">⛶</button>
+  </nav>
+  <div id="progress"><span></span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="/shared/status.js"></script>
+  <script type="module" src="pitch2.js"></script>
+</body>
+</html>
