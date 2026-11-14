@@ -89,6 +89,10 @@ Merges to `main` deploy automatically via GitHub Actions, and every pull request
 
 `members/{uid}` keeps `role` and a `shelterIds` list so an approval step or several shelters per account can be added without changing the data structure.
 
+### Demo mode
+
+During pitches a scheduled job keeps the demo counts from expiring (`node scripts/demo-mode.js on|off|reset`). See [docs/demo-mode.md](docs/demo-mode.md).
+
 ## Alternative: container
 
 The `Dockerfile` runs the local server (in-memory data, one instance). It was used on Cloud Run before Firebase was set up and is kept as a fallback.
