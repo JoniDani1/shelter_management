@@ -137,3 +137,10 @@ test('accounts cannot read other members or the admin list', async () => {
   await assertSucceeds(getDoc(doc(db, 'adminEmails', STRANGER.email)));
   await assertFails(setDoc(doc(db, 'adminEmails', STRANGER.email), { x: 1 }));
 });
+
+test('anyone can read the demo switch, nobody can write it from the app', async () => {
+  const anon = env.unauthenticatedContext().firestore();
+  await assertSucceeds(getDoc(doc(anon, 'config', 'demo')));
+  await assertFails(setDoc(doc(ctx(ADMIN), 'config', 'demo'), { enabled: false }));
+});
+

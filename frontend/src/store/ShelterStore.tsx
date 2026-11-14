@@ -10,6 +10,7 @@ import {
 import {
   refreshStatus,
   setFreeBeds,
+  subscribeDemoMode,
   subscribeShelters,
 } from "../services/shelterService";
 import {
@@ -53,6 +54,15 @@ export function ShelterProvider({ children }: { children: ReactNode }) {
           setError("Live data is not reachable right now.");
           setLoading(false);
         },
+      ),
+    [],
+  );
+
+  // Demo mode switches the 30-minute rule off; recompute statuses when it changes.
+  useEffect(
+    () =>
+      subscribeDemoMode(() =>
+        setShelters((list) => list.map((s) => refreshStatus(s))),
       ),
     [],
   );

@@ -99,6 +99,12 @@ service cloud.firestore {
       allow delete: if isAdmin() || (signedIn() && request.auth.uid == uid);
     }
 
+    // Demo mode switch (docs/demo-mode.md): pages read it, only admin credentials write it.
+    match /config/demo {
+      allow read: if true;
+      allow write: if false;
+    }
+
     match /adminEmails/{email} {
       // An account may check whether it is an admin; nobody may write from the app.
       allow get: if signedIn() && request.auth.token.email.lower() == email;
