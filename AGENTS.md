@@ -2,7 +2,7 @@
 
 Context for AI coding agents and new teammates working in this repository.
 
-## What this project is
+## What this project is (working name: Tonight)
 
 A hackathon project built in Berlin (started 2026-11-14). The challenge: build something that helps people in the city.
 
@@ -13,7 +13,7 @@ The idea: a web app where shelters enter their number of free beds live, so nobo
 - **Stage 1:** A display for U-Bahn stations that shows the current number of free beds per shelter.
 - **Stage 2:** A public page with a map (Google Maps) showing the live occupancy of all shelters.
 
-The product name is not decided yet. Do not hard-code a product name.
+Working name: **Tonight** (may still change, so keep the name easy to replace in code).
 
 ## Rules
 
