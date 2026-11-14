@@ -77,3 +77,7 @@ Anyone can read. Until operator login exists, anyone may update only `freeBeds` 
 ## Alternative: container
 
 The `Dockerfile` runs the local server (in-memory data, one instance). It was used on Cloud Run before Firebase was set up and is kept as a fallback.
+
+## Shelter management
+
+The management screen is included on this branch alongside the public board. See the [management guide and screenshot](docs/shelter-management.md) for shelter selection, plus/minus controls, count confirmation and admission controls.
