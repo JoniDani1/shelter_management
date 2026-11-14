@@ -25,7 +25,11 @@ npm start
 
 Open both side by side: every plus/minus press on the operator page shows up on the board immediately.
 
-`npm test` runs the API and status-rule tests. Settings live in `.env` (see `.env.example`); never commit `.env` or any key file.
+The local server has no login: everyone may edit every shelter.
+
+To try the real login and security rules locally, run `npm run emulators` (needs Java) and open http://localhost:5050/operator/. The pages detect `localhost` and use the Auth and Firestore emulators; seed them with `FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 npm run seed:firestore`.
+
+`npm test` runs the API and status-rule tests, `npm run test:rules` the Firestore security rules tests (starts the emulator). Settings live in `.env` (see `.env.example`); never commit `.env` or any key file.
 
 ## How it works
 
@@ -72,9 +76,15 @@ npm run deploy:firebase   # deploys public/ to Firebase Hosting and firestore.ru
 
 Merges to `main` deploy automatically via GitHub Actions, and every pull request gets a preview URL. See [docs/deployment.md](docs/deployment.md).
 
-### Security rules (demo state)
+### Operator login and security rules
 
-Anyone can read. Until operator login exists, anyone may update only `freeBeds` (0 to `totalBeds`), `admissionOpen` and `updatedAt` (must be the server time). Creating, deleting or editing any other field is denied. Next step: Firebase Auth (email/password) and per-shelter write access.
+- The **board** is public and needs no login.
+- The **operator page** requires **Sign in with Google** (Firebase Auth). On first sign-in the operator picks the shelter they run (search, grouped by district); it is saved in `members/{uid}` and they land on it next time. "Change shelter" switches it. There is no approval step yet, so any Google account can pick any shelter.
+- **Admins** may edit every shelter. An account is admin if a document `adminEmails/{its email}` exists (works before the first login). Add one with `npm run set-admin -- someone@gmail.com` (admin credentials needed). Never put admin emails in the repo.
+- **Rules** (`firestore.rules`): anyone can read shelters. A signed-in account may change only the shelter saved for it (admins: all), and only `freeBeds` (0 to `totalBeds`), `admissionOpen`, `updatedAt` (server time), `updatedBy` (own uid) and `lastHistoryId`.
+- **History:** every change also writes `shelters/{id}/history/{entry}` (`kind`, `delta`, `freeBeds`, `totalBeds`, `admissionOpen`, `by`, `at`) in the same transaction; the rules reject a change without its entry. This feeds later features such as "usually full from about 21:30".
+
+`members/{uid}` keeps `role` and a `shelterIds` list so an approval step or several shelters per account can be added without changing the data structure.
 
 ## Alternative: container
 

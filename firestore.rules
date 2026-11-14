@@ -1,21 +1,108 @@
 rules_version = '2';
 
-// Tonight: shelters are public to read. For the hackathon demo anyone may
-// change only the live fields (free beds, admission state, timestamp), with
-// validation. TODO: require Firebase Auth and restrict to the shelter's staff.
+// Tonight security rules.
+//
+//   shelters/{id}                 public read; approved operators of that shelter
+//                                 (and admins) may change only the live fields
+//   shelters/{id}/history/{entry} one entry per change, written in the same
+//                                 transaction (the shelter's lastHistoryId must
+//                                 point to it)
+//   members/{uid}                 which shelter an account runs; for now each
+//                                 account picks its own (no approval step yet)
+//   adminEmails/{email}           admin accounts by Google email; managed only
+//                                 with admin credentials (console or script)
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function memberPath() {
+      return /databases/$(database)/documents/members/$(request.auth.uid);
+    }
+
+    function isAdmin() {
+      return signedIn() && (
+        (request.auth.token.email_verified == true
+          && exists(/databases/$(database)/documents/adminEmails/$(request.auth.token.email.lower())))
+        || (exists(memberPath()) && get(memberPath()).data.role == 'admin')
+      );
+    }
+
+    // Admins, or accounts that saved this shelter as theirs in members/{uid}.
+    function canEdit(shelterId) {
+      return isAdmin() || (
+        signedIn()
+        && exists(memberPath())
+        && shelterId in get(memberPath()).data.get('shelterIds', [])
+      );
+    }
+
     match /shelters/{shelterId} {
       allow read: if true;
       allow create, delete: if false;
-      allow update: if
-        request.resource.data.diff(resource.data).affectedKeys()
-          .hasOnly(['freeBeds', 'admissionOpen', 'updatedAt'])
+      allow update: if canEdit(shelterId)
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['freeBeds', 'admissionOpen', 'updatedAt', 'updatedBy', 'lastHistoryId'])
         && request.resource.data.freeBeds is int
         && request.resource.data.freeBeds >= 0
         && request.resource.data.freeBeds <= resource.data.totalBeds
         && request.resource.data.admissionOpen is bool
-        && request.resource.data.updatedAt == request.time;
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.updatedBy == request.auth.uid
+        // Every change must come with a new history entry (written in the same transaction).
+        && request.resource.data.lastHistoryId is string
+        && request.resource.data.lastHistoryId != resource.data.get('lastHistoryId', '')
+        && existsAfter(/databases/$(database)/documents/shelters/$(shelterId)/history/$(request.resource.data.lastHistoryId));
+
+      match /history/{entryId} {
+        allow read: if isAdmin() || canEdit(shelterId);
+        allow update, delete: if false;
+        allow create: if canEdit(shelterId)
+          && request.resource.data.keys().hasOnly(['kind', 'delta', 'freeBeds', 'totalBeds', 'admissionOpen', 'by', 'at'])
+          && request.resource.data.by == request.auth.uid
+          && request.resource.data.at == request.time
+          && request.resource.data.kind in ['adjust', 'confirm', 'admission', 'reset']
+          // The entry must match the shelter as it is after this transaction.
+          && getAfter(/databases/$(database)/documents/shelters/$(shelterId)).data.lastHistoryId == entryId
+          && request.resource.data.freeBeds == getAfter(/databases/$(database)/documents/shelters/$(shelterId)).data.freeBeds
+          && request.resource.data.admissionOpen == getAfter(/databases/$(database)/documents/shelters/$(shelterId)).data.admissionOpen;
+      }
+    }
+
+    match /members/{uid} {
+      function validShelterChoice() {
+        return request.resource.data.shelterIds is list
+          && request.resource.data.shelterIds.size() == 1
+          && exists(/databases/$(database)/documents/shelters/$(request.resource.data.shelterIds[0]))
+          && request.resource.data.updatedAt == request.time;
+      }
+
+      allow read: if (signedIn() && request.auth.uid == uid) || isAdmin();
+      allow list: if isAdmin();
+
+      // For now operators choose their own shelter (no approval step): an account
+      // may save exactly one existing shelter for itself, but never make itself admin.
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['email', 'name', 'role', 'shelterIds', 'updatedAt'])
+        && request.resource.data.role == 'operator'
+        && request.resource.data.email == request.auth.token.email
+        && validShelterChoice();
+
+      allow update: if isAdmin() || (
+        signedIn() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['shelterIds', 'updatedAt', 'name'])
+        && validShelterChoice()
+      );
+
+      allow delete: if isAdmin() || (signedIn() && request.auth.uid == uid);
+    }
+
+    match /adminEmails/{email} {
+      // An account may check whether it is an admin; nobody may write from the app.
+      allow get: if signedIn() && request.auth.token.email.lower() == email;
+      allow list, write: if false;
     }
   }
 }

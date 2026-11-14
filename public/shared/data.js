@@ -1,13 +1,24 @@
-// Picks the data source: the local dev server (npm start) if it answers
-// /api/config, otherwise Firestore (Firebase Hosting has no /api).
+// Picks the backend: the local dev server (npm start) if it answers
+// /api/config, otherwise Firebase (Firebase Hosting has no /api).
+let backend;
+
+function detectBackend() {
+  backend ??= fetch('/api/config', { cache: 'no-store' })
+    .then((res) => (res.ok && res.headers.get('content-type')?.includes('json') ? 'local' : 'firestore'))
+    .catch(() => 'firestore');
+  return backend;
+}
+
+// Shelter data: subscribe, plus/minus, confirm, admissions.
 export async function loadData() {
-  try {
-    const res = await fetch('/api/config', { cache: 'no-store' });
-    if (res.ok && res.headers.get('content-type')?.includes('json')) {
-      return (await import('./data-local.js')).default;
-    }
-  } catch (_) {
-    // fall through to Firestore
-  }
-  return (await import('./data-firestore.js')).default;
+  return (await detectBackend()) === 'local'
+    ? (await import('./data-local.js')).default
+    : (await import('./data-firestore.js')).default;
+}
+
+// Sign-in and access control (who may edit which shelter).
+export async function loadAccess() {
+  return (await detectBackend()) === 'local'
+    ? (await import('./access-local.js')).default
+    : (await import('./access-firestore.js')).default;
 }
