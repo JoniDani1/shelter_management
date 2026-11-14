@@ -28,6 +28,7 @@ import {
 } from "./ui/morphing-popover";
 import ToolbarExpandable from "./ui/toolbar-expandable";
 import { ShelterDetails } from "./ShelterDetails";
+import { ShelterRowContent, byAvailability } from "./ShelterRow";
 import type { Shelter } from "../types/models";
 function MapMarker({
   shelter: s,
@@ -321,7 +322,7 @@ export function BerlinMap() {
               </button>
             </div>
           ) : (
-            filtered.map((s) => (
+            [...filtered].sort(byAvailability).map((s) => (
               <MorphingPopover
                 className="shelter-row-wrap"
                 key={s.id}
@@ -331,34 +332,10 @@ export function BerlinMap() {
                 }
               >
                 <MorphingPopoverTrigger
-                  className="shelter-row"
+                  className="shelter-row board-row"
                   onClick={() => {}}
                 >
-                  <div>
-                    <span className="row-district">
-                      {s.district} · {s.eligibility}
-                    </span>
-                    <h3>{s.name}</h3>
-                    <span className="row-address">
-                      {s.address.split(",")[0]}
-                    </span>
-                  </div>
-                  <span className={`row-count ${s.availabilityStatus}`}>
-                    <strong>
-                      {s.availabilityStatus === "unknown" ? (
-                        "?"
-                      ) : (
-                        <AnimatedNumber value={s.availableBeds} />
-                      )}
-                    </strong>
-                    <span>
-                      {s.availabilityStatus === "unknown"
-                        ? "unknown"
-                        : s.availableBeds === 0
-                          ? "full"
-                          : "beds"}
-                    </span>
-                  </span>
+                  <ShelterRowContent shelter={s} />
                 </MorphingPopoverTrigger>
                 <MorphingPopoverContent
                   className="list-detail"

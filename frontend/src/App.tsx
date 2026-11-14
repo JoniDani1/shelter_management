@@ -7,6 +7,7 @@ import {
   BedDouble,
   Moon,
   ShieldCheck,
+  Monitor,
   X,
   MapPin,
   Info,
@@ -23,6 +24,7 @@ import {
 import LoginCard from "./components/ui/spectrum-login";
 import { Chart } from "./components/ui/spectrum-animated-chart";
 import { WorkerPanel } from "./components/WorkerPanel";
+import { ShelterRowContent, byAvailability } from "./components/ShelterRow";
 const BerlinMap = lazy(() =>
   import("./components/BerlinMap").then((m) => ({ default: m.BerlinMap })),
 );
@@ -52,6 +54,8 @@ export default function App() {
   const scroll = useRef(0);
   const confirmed = shelters.filter((s) => s.availabilityStatus !== "unknown");
   const available = confirmed.reduce((a, s) => a + s.availableBeds, 0);
+  const withBeds = confirmed.filter((s) => s.availableBeds > 0);
+  const topShelters = [...withBeds].sort(byAvailability).slice(0, 6);
   const capacity = shelters.reduce((a, s) => a + s.totalCapacity, 0);
   const occupied = shelters.reduce((a, s) => a + s.occupiedBeds, 0);
   useEffect(() => {
@@ -156,53 +160,75 @@ export default function App() {
         <main id="main">
           <section className="hero">
             <div className="hero-location">
-              <MapPin size={13} />
-              BERLIN, EVERY NIGHT
+              <span className="live-dot" />
+              BERLIN, TONIGHT · LIVE
             </div>
             <h1>
-              <span className="headline-intro">An estimated</span>
+              <span className="headline-intro">Right now there are</span>
               <span className="hero-number">
                 <AnimatedNumber
-                  value={statistic.value}
+                  value={available}
                   springOptions={{ stiffness: 65, damping: 22 }}
                 />
                 <span className="number-period">.</span>
               </span>
               <span className="headline-end">
-                people live without
+                free beds in <em>{withBeds.length}</em> of {shelters.length}
                 <br />
-                <em>accommodation</em> in Berlin.
+                night shelters in Berlin.
               </span>
             </h1>
             <p className="hero-support">
-              Everyone deserves a place to rest.
-              <br />
-              Find shelter beds across the city, in one place.
+              {loading
+                ? "Loading live data…"
+                : error
+                  ? error
+                  : "Shelters update their free beds live. Demo numbers for now."}
             </p>
-            <button
-              ref={opener}
-              className="primary map-launch"
-              onClick={() => setMapOpen(true)}
-            >
-              <span className="button-map">
-                <MapPin size={18} />
-              </span>
-              <TextMorph as="span">
-                {mapOpen ? "Close Map" : "View Map"}
-              </TextMorph>
-              <ArrowUpRight size={19} />
-            </button>
+            <div className="hero-actions">
+              <button
+                ref={opener}
+                className="primary map-launch"
+                onClick={() => setMapOpen(true)}
+              >
+                <span className="button-map">
+                  <MapPin size={18} />
+                </span>
+                <TextMorph as="span">
+                  {mapOpen ? "Close Map" : "View Map"}
+                </TextMorph>
+                <ArrowUpRight size={19} />
+              </button>
+              <a className="secondary board-link" href="/board/">
+                <Monitor size={17} />
+                Station board
+              </a>
+            </div>
             <p className="no-account">Free to use. No account needed.</p>
-            <a
-              className="statistic-source"
-              href={statistic.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Berlin Senate · February 2024 estimate of people without
-              accommodation <ArrowUpRight size={11} />
-            </a>
             <Skyline />
+          </section>
+          <section className="tonight-list" aria-label="Shelters with free beds">
+            <div className="tonight-list-head">
+              <h2>Free beds now</h2>
+              <span className="demo-tag">DEMO NUMBERS</span>
+            </div>
+            {topShelters.length ? (
+              <ul>
+                {topShelters.map((s) => (
+                  <li key={s.id} className="shelter-row board-row">
+                    <ShelterRowContent shelter={s} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="fine-print">
+                {loading ? "Loading…" : "No confirmed free beds right now."}
+              </p>
+            )}
+            <button className="explore-link" onClick={() => setMapOpen(true)}>
+              All {shelters.length} shelters on the map
+              <ArrowRight size={21} />
+            </button>
           </section>
           <section
             className="availability-strip"
@@ -224,15 +250,13 @@ export default function App() {
                 <BedDouble size={20} />
               </span>
               <strong>
-                <AnimatedNumber value={available} />
+                <AnimatedNumber value={statistic.value} />
               </strong>
-              <span>demo beds available</span>
+              <span>people without accommodation</span>
               <small>
-                {loading
-                  ? "Loading live data…"
-                  : error
-                    ? error
-                    : "Live from shelters · excludes counts older than 30 min"}
+                <a href={statistic.sourceUrl} target="_blank" rel="noreferrer">
+                  Berlin Senate estimate, Feb 2024 ↗
+                </a>
               </small>
             </div>
             <div className="strip-stat">
@@ -329,7 +353,11 @@ export default function App() {
             <Moon size={20} />
             {APP_NAME}
           </a>
-          <span>A place to rest. A city that cares.</span>
+          <nav className="footer-links" aria-label="Other Tonight pages">
+            <a href="/board/">Station board</a>
+            <a href="/map/">Google map</a>
+            <a href="/operator/">Shelter staff</a>
+          </nav>
           <span>Made for Berlin · 2026</span>
         </footer>
         <AnimatePresence>
