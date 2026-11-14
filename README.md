@@ -70,6 +70,8 @@ npm run seed:firestore    # (re)write the 8 sample shelters, resets their counts
 npm run deploy:firebase   # deploys public/ to Firebase Hosting and firestore.rules
 ```
 
+Merges to `main` deploy automatically via GitHub Actions, and every pull request gets a preview URL. See [docs/deployment.md](docs/deployment.md).
+
 ### Security rules (demo state)
 
 Anyone can read. Until operator login exists, anyone may update only `freeBeds` (0 to `totalBeds`), `admissionOpen` and `updatedAt` (must be the server time). Creating, deleting or editing any other field is denied. Next step: Firebase Auth (email/password) and per-shelter write access.
