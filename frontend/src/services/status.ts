@@ -7,6 +7,13 @@
 import type { AvailabilityStatus } from "../types/models";
 
 export const STALE_AFTER_MS = 30 * 60 * 1000;
+
+// Demo mode (Firestore config/demo.enabled, see docs/demo-mode.md) turns the
+// 30-minute rule off so demo counts never show as "unknown".
+let demoMode = false;
+export function setDemoMode(on: boolean) {
+  demoMode = on;
+}
 export const LIMITED_BELOW = 5;
 
 export function availabilityStatus(
@@ -15,7 +22,7 @@ export function availabilityStatus(
 ): AvailabilityStatus {
   const updated = s.updatedAt ? Date.parse(s.updatedAt) : NaN;
   const age = now - updated;
-  if (!Number.isFinite(updated) || age > STALE_AFTER_MS || age < -5 * 60 * 1000)
+  if (!Number.isFinite(updated) || (!demoMode && (age > STALE_AFTER_MS || age < -5 * 60 * 1000)))
     return "unknown";
   if (!Number.isInteger(s.freeBeds)) return "unknown";
   if (!s.admissionOpen || s.freeBeds <= 0) return "full";

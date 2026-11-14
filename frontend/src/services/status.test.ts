@@ -18,3 +18,14 @@ describe("availability status (same rules as /board/)", () => {
     expect(availabilityStatus(s, now)).toBe(expected),
   );
 });
+
+describe("demo mode", () => {
+  it("keeps old counts instead of unknown while demo mode is on", async () => {
+    const { setDemoMode } = await import("./status");
+    setDemoMode(true);
+    expect(availabilityStatus({ freeBeds: 9, admissionOpen: true, updatedAt: stale }, now)).toBe("available");
+    expect(availabilityStatus({ freeBeds: 9, admissionOpen: true, updatedAt: null }, now)).toBe("unknown");
+    setDemoMode(false);
+    expect(availabilityStatus({ freeBeds: 9, admissionOpen: true, updatedAt: stale }, now)).toBe("unknown");
+  });
+});

@@ -15,7 +15,7 @@ import {
   type DocumentSnapshot,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import { availabilityStatus } from "./status";
+import { availabilityStatus, setDemoMode } from "./status";
 import type { CapacityValues, Shelter } from "../types/models";
 
 export function validateCapacity(v: CapacityValues): string | null {
@@ -88,6 +88,19 @@ export function refreshStatus(s: Shelter, now = Date.now()): Shelter {
     now,
   );
   return status === s.availabilityStatus ? s : { ...s, availabilityStatus: status };
+}
+
+// Live demo-mode switch (config/demo.enabled). Calls back after it changed.
+export function subscribeDemoMode(onChange: (on: boolean) => void) {
+  return onSnapshot(
+    doc(db, "config", "demo"),
+    (snap) => {
+      const on = snap.data()?.enabled === true;
+      setDemoMode(on);
+      onChange(on);
+    },
+    (err) => console.warn("Could not read demo mode", err),
+  );
 }
 
 export function subscribeShelters(

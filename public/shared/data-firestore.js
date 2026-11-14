@@ -5,7 +5,7 @@
 // shelters/{id}/history/{entryId} in the same transaction and stores its id in
 // `lastHistoryId`; the security rules reject a change without that entry.
 import {
-  collection, doc, query, orderBy, onSnapshot, runTransaction, getDocs, serverTimestamp,
+  collection, doc, query, orderBy, onSnapshot, runTransaction, getDoc, getDocs, serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
 import { db, auth } from './firebase.js';
 
@@ -75,8 +75,16 @@ async function writeChange(id, kind, compute) {
 }
 
 export default {
+  // Demo mode (Firestore config/demo.enabled, see docs/demo-mode.md) turns off
+  // the 30-minute rule so demo counts never show as "Unknown".
   async getConfig() {
-    return { staleAfterMinutes: 30, demo: true };
+    let demoMode = false;
+    try {
+      demoMode = (await getDoc(doc(db, 'config', 'demo'))).data()?.enabled === true;
+    } catch (err) {
+      console.warn('Could not read demo mode', err);
+    }
+    return { staleAfterMinutes: demoMode ? Infinity : 30, demo: true, demoMode };
   },
 
   subscribe(onShelters, onConnection = () => {}) {
