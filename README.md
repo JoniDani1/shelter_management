@@ -11,3 +11,9 @@ Current stage: concept review only. No application, live data integration, booki
 [View the improved admission board and design note](docs/shelter-board-admission-design.md).
 
 ![Shelter board admission concept](docs/images/berlin-shelter-board-admission-concept.png)
+
+## Dummy-data preview
+
+[Static board with fictional bed counts and statuses](docs/shelter-board-dummy-data.md). All availability values and times are simulated.
+
+![Dummy-data shelter board](docs/images/berlin-shelter-board-dummy-data.png)
