@@ -24,8 +24,8 @@
     return { key: 'available', label: 'Available', showCount: true };
   }
 
-  // Who a shelter admits. Values: "all", "women", "men".
-  const ADMITS_LABELS = { all: 'Women & men', women: 'Women only', men: 'Men only' };
+  // Who a shelter admits. Values: "all", "women", "men", "families".
+  const ADMITS_LABELS = { all: 'Women & men', women: 'Women only', men: 'Men only', families: 'Families' };
   function admitsLabel(admits) {
     return ADMITS_LABELS[admits] || 'Ask at the door';
   }

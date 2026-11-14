@@ -14,32 +14,25 @@
     <header class="top">
       <div class="brand">
         <div class="logo" aria-hidden="true"><span></span></div>
-        <div>
-          <h1>Free beds tonight</h1>
-          <p class="sub">Night shelters in Berlin · live</p>
-        </div>
+        <h1>Free beds tonight</h1>
       </div>
-      <div class="demo" title="Real shelters, but the free-bed numbers are examples">Demo · sample numbers</div>
-      <div class="clock">
-        <div id="time">--:--</div>
-        <div id="date" class="date"></div>
-      </div>
+      <div class="demo" title="Real shelters, but the free-bed numbers are examples">Demo</div>
+      <div id="time" class="clock">--:--</div>
     </header>
 
-    <div class="cols" aria-hidden="true">
-      <span>Shelter</span>
-      <span class="num">Free beds</span>
-      <span>Occupancy</span>
-      <span>Status</span>
-      <span class="num">Updated</span>
-    </div>
+    <section class="main" aria-live="polite">
+      <ol id="rows" class="rows"></ol>
+    </section>
 
-    <ol id="rows" class="rows" aria-live="polite"></ol>
+    <section id="nobeds" class="nobeds" hidden>
+      <h2>No beds now</h2>
+      <p id="nobeds-list"></p>
+    </section>
 
     <footer class="bottom">
       <span id="conn" class="conn">Connecting…</span>
-      <span id="page" class="page"></span>
-      <span class="note">Shelters and opening hours: Berliner Kältehilfe, Nov 2026. Demo: free-bed numbers are examples, not live data. Admission depends on shelter rules.</span>
+      <span class="note">Demo: bed numbers are examples. Shelters: Berliner Kältehilfe, Nov 2026. Admission depends on the shelter.</span>
+      <span id="pages" class="pages" aria-hidden="true"></span>
     </footer>
   </main>
 
