@@ -1626,3 +1626,125 @@ footer .wordmark {
   padding: 8px 16px;
   font-size: 0.85rem;
 }
+
+/* Readability pass: compact pins when zoomed out, clusters, calmer phone layout. */
+.bed-marker.compact {
+  min-width: 34px;
+  min-height: 34px;
+  height: 34px;
+  padding: 0 9px;
+  border-radius: 17px;
+  justify-content: center;
+  gap: 0;
+  font-size: 12px;
+}
+.bed-marker.compact:after {
+  display: none;
+}
+.cluster-marker {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f9f9f3;
+  background: #526747;
+  border: 3px solid #fafbf5;
+  box-shadow:
+    0 0 0 5px #52674733,
+    0 3px 10px #29372040;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1;
+  cursor: pointer;
+}
+.cluster-marker b {
+  font-size: 15px;
+  font-weight: 700;
+}
+.cluster-marker small {
+  font-size: 8px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+.cluster-marker.limited {
+  background: #97752f;
+  box-shadow:
+    0 0 0 5px #97752f33,
+    0 3px 10px #29372040;
+}
+.cluster-marker.full {
+  background: #a44e3b;
+  box-shadow:
+    0 0 0 5px #a44e3b33,
+    0 3px 10px #29372040;
+}
+.cluster-marker.unknown {
+  background: #858c7c;
+  box-shadow:
+    0 0 0 5px #858c7c33,
+    0 3px 10px #29372040;
+}
+.cluster-marker.limited,
+.cluster-marker.full,
+.cluster-marker.unknown {
+  color: #f9f9f3 !important;
+}
+
+@media (max-width: 650px) {
+  /* Map gets most of the screen; the list is a compact sheet below it. */
+  .map-canvas {
+    height: 60%;
+  }
+  .shelter-list {
+    height: 40%;
+  }
+  .map-header {
+    height: 56px;
+  }
+  .map-header-actions .secondary span {
+    display: none;
+  }
+  .map-header-actions .secondary {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .map-header-actions .worker-trigger {
+    font-size: 11px;
+    height: 44px;
+    padding: 0 12px;
+  }
+  .map-demo-banner {
+    padding: 6px 14px;
+  }
+  .list-heading {
+    padding: 10px 20px;
+  }
+  .list-heading .district,
+  .list-heading h2 {
+    display: none;
+  }
+  .list-heading p {
+    font-size: 12px;
+  }
+  .shelter-row {
+    min-height: 0;
+    padding: 11px 20px;
+  }
+  .shelter-row h3 {
+    font-size: 14px;
+    margin: 4px 0 2px;
+  }
+  .row-count strong {
+    font-size: 22px;
+  }
+  .list-foot {
+    display: none;
+  }
+  .map-legend {
+    font-size: 9px;
+  }
+}

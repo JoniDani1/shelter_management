@@ -367,6 +367,7 @@ export default function App() {
                   <button
                     ref={mapClose}
                     className="secondary"
+                    aria-label="Close map"
                     onClick={() => {
                       setMapOpen(false);
                       opener.current?.focus();
@@ -380,8 +381,8 @@ export default function App() {
               <div className="map-demo-banner">
                 <Info size={14} />
                 <span>
-                  Demo · sample numbers. Shelters are real, free-bed counts are
-                  not yet. Contact shelters directly before travelling.
+                  Demo · sample bed numbers. The shelters are real; call
+                  before you go.
                 </span>
               </div>
               <Suspense
