@@ -4,6 +4,13 @@ Live free-bed board for Berlin night shelters. Shelters report free beds with a 
 
 > Hackathon prototype. All shelters and numbers in `data/seed.json` are fictional sample data.
 
+## Live
+
+- Board: https://tonight-berlin.web.app/board/
+- Operators: https://tonight-berlin.web.app/operator/
+
+Hosted on Firebase Hosting, data in Cloud Firestore (`europe-west3`, collection `shelters`), GCP project `gen-lang-client-0099418772`.
+
 ## Run it locally
 
 Requires Node.js 20+.
@@ -28,10 +35,13 @@ public/
   operator/    Plus/minus page for shelter staff
   shared/
     status.js      Availability rules (Available / Limited / Full / Closed / Unknown)
-    data-local.js  Browser data source for the local server (REST + Server-Sent Events)
-src/
-  server.js    Small Express server: static files, JSON API, live stream at /api/stream
-  store/       Server-side store (in memory for now)
+    data.js            Picks the data source: local server if /api exists, otherwise Firestore
+    data-local.js      Local dev server (REST + Server-Sent Events)
+    data-firestore.js  Firestore (onSnapshot for live updates, transactions for plus/minus)
+    firebase-config.js Public Firebase web app config (not a secret)
+src/           Local dev server (Express, in-memory store). Not used in production.
+scripts/seed-firestore.js  Writes data/seed.json into Firestore
+firestore.rules            Security rules
 data/seed.json 8 sample shelters with 20, 30 or 40 beds
 ```
 
@@ -51,27 +61,19 @@ Operators press **Confirm count** when the number is still correct, so the row d
 
 `id`, `name`, `district`, `totalBeds`, `freeBeds`, `admits` (`all` / `women` / `men`), `opensAt`, `closesAt`, `admissionOpen`, `updatedAt`. Address and location (for the map in stage 2) will be added with real shelter data.
 
-## Moving to Firebase
+## Deploy (Firebase)
 
-The planned target is Firebase Hosting + Firestore (no own server). The pages only talk to `window.TonightData` (defined in `public/shared/data-local.js`), so the switch is:
-
-1. Enable Firestore in the Google Cloud project and add Firebase to it.
-2. Add `public/shared/data-firestore.js` with the same API: `onSnapshot` on the `shelters` collection for `subscribe`, a transaction clamped to `0..totalBeds` for `adjustFreeBeds`, `serverTimestamp()` for `updatedAt`.
-3. Load that file instead of `data-local.js` in both `index.html` files, and seed Firestore from `data/seed.json`.
-4. Deploy `public/` with Firebase Hosting. `src/` is then only needed for local development.
-
-## Current deployment (interim)
-
-Until Firebase is set up, the app runs as a single Cloud Run service `tonight` in `europe-west3` (image in Artifact Registry repo `tonight`):
-
-- Board: https://tonight-1016165220146.europe-west3.run.app/board/
-- Operators: https://tonight-1016165220146.europe-west3.run.app/operator/
-
-Data is in memory, so it resets to the seed data when the instance restarts. `--max-instances=1` keeps all viewers on the same state.
+Needs the Firebase CLI (`npm i -g firebase-tools`) and Google credentials with access to the project (`GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json`, never commit the key).
 
 ```bash
-docker build -t europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag> .
-docker push europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag>
-gcloud run deploy tonight --image=europe-west3-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/tonight/tonight:<tag> \
-  --region=europe-west3 --allow-unauthenticated --max-instances=1 --timeout=3600 --memory=256Mi
+npm run seed:firestore    # (re)write the 8 sample shelters, resets their counts
+npm run deploy:firebase   # deploys public/ to Firebase Hosting and firestore.rules
 ```
+
+### Security rules (demo state)
+
+Anyone can read. Until operator login exists, anyone may update only `freeBeds` (0 to `totalBeds`), `admissionOpen` and `updatedAt` (must be the server time). Creating, deleting or editing any other field is denied. Next step: Firebase Auth (email/password) and per-shelter write access.
+
+## Alternative: container
+
+The `Dockerfile` runs the local server (in-memory data, one instance). It was used on Cloud Run before Firebase was set up and is kept as a fallback.

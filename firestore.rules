@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Tonight: shelters are public to read. For the hackathon demo anyone may
+// change only the live fields (free beds, admission state, timestamp), with
+// validation. TODO: require Firebase Auth and restrict to the shelter's staff.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /shelters/{shelterId} {
+      allow read: if true;
+      allow create, delete: if false;
+      allow update: if
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['freeBeds', 'admissionOpen', 'updatedAt'])
+        && request.resource.data.freeBeds is int
+        && request.resource.data.freeBeds >= 0
+        && request.resource.data.freeBeds <= resource.data.totalBeds
+        && request.resource.data.admissionOpen is bool
+        && request.resource.data.updatedAt == request.time;
+    }
+  }
+}
