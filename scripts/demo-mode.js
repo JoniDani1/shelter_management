@@ -28,7 +28,9 @@ function demoFreeBeds(index, totalBeds) {
   if (bucket < 3) return 0; // full
   if (bucket < 8) return Math.min(totalBeds, 1 + (index % 4)); // limited: 1-4
   const share = [0.12, 0.2, 0.3, 0.45][index % 4];
-  return Math.min(totalBeds, Math.max(5 + ((index * 3) % 8), Math.round(totalBeds * share)));
+  const wanted = Math.max(5 + ((index * 3) % 8), Math.round(totalBeds * share));
+  // Never (almost) empty: at least a quarter of the beds are taken.
+  return Math.max(0, Math.min(wanted, totalBeds - Math.ceil(totalBeds * 0.25)));
 }
 
 async function touchAll(fields = () => ({})) {
